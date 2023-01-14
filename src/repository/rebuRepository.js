@@ -28,19 +28,19 @@ const RebuService = {
     makeRequest: (data, passengerId) => {
         return axios.post(`/request/make/${passengerId}`, data)
     },
-    registerPassenger: (email, password, name, surname) => {
+    registerPassenger: (firstName, surname, email, password) => {
         return axios.post("/public/register/passenger", {
             "email" : email,
             "password" : password,
-            "name" : name,
+            "name" : firstName,
             "surname" : surname,
         })
     },
-    registerDriver: (email, password, name, surname, pricePerKm) => {
+    registerDriver: (firstName, surname, email, password, pricePerKm) => {
         return axios.post("/public/register/driver", {
             "email" : email,
             "password" : password,
-            "name" : name,
+            "name" : firstName,
             "surname" : surname,
             "pricePerKm" : pricePerKm
         })
