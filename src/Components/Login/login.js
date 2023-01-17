@@ -21,13 +21,14 @@ const Login = (props) => {
     const onFormSubmit = (e) => {
         e.preventDefault();
         RebuMKService.login(formData.username, formData.password).then(resp => {
-            if(resp.data === "Driver"){
+            if(resp.data.typeOfLoggedUser === "Driver"){
                 props.onLogin();
+                props.onLoadRequests(resp.data.idOfLoggedUser)
                 navigate("/requests");
-            } else if(resp.data === "Passenger"){
+            } else if(resp.data.typeOfLoggedUser === "Passenger"){
                 props.onLogin();
                 navigate("/passengers");
-            } else if(resp.data === "Admin"){
+            } else if(resp.data.typeOfLoggedUser === "Admin"){
                 props.onLogin();
                 navigate("/admins");
             }

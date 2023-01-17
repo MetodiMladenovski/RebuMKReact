@@ -3,10 +3,10 @@ import {Link} from 'react-router-dom';
 
 const header = (props) => {
     
-    let register = (<div></div>);
+    let register = (<Link className="nav-link" to={"/register"}>Register</Link>);
     let requests = (<Link className="nav-link" to={"/requests"}>Requests</Link>)
     let drivers = (<Link className="nav-link" to={"/drivers"}>Drivers</Link>)
-    let rebumk = (<a style={{marginLeft: 10 + "em"}} className="navbar-brand" href="/home">RebuMK</a>)
+    let rebumk = (<a style={{marginLeft: 10 + "em"}} className="navbar-brand" href="/">RebuMK</a>)
 
     return (
         <header>
