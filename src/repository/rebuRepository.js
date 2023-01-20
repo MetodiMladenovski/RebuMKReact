@@ -7,8 +7,11 @@ const RebuService = {
     finishDrive: (driveId) => {
         return axios.post(`/drive/finish/${driveId}`)
     },
-    startDrive: (requestId, driverId, data) => {
-        return axios.post(`/drive/start/${requestId}/${driverId}`, data)
+    startDrive: (requestId, driverId, destinationLatitude, destinationLongitude) => {
+        return axios.post(`/drive/start/${requestId}/${driverId}`, {
+            "destinationLatitude" : destinationLatitude,
+            "destinationLongitude" : destinationLongitude
+        })
     },
     approveDriver: (driverId) => {
         return axios.post(`/driver/approve/${driverId}`)

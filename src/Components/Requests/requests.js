@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "../../custom-axios/axios";
+import { useNavigate } from 'react-router-dom'
 
-const requests = (props) => {
+const Requests = (props) => {
+    const navigate = useNavigate();
+
+    const toConfirmedRequest = async (driverId, requestId) => {
+        const response = await axios.post(`/request/confirm/${driverId}/${requestId}`)
+        navigate('/confirmed-request', {state: {confirmedRequest: response.data}})
+    };
+
     return(
         <div className={"container mm-4 mt-5"}>
             <div className={"row"}>
@@ -14,6 +23,7 @@ const requests = (props) => {
                             <th scope={"col"}>Latitude</th>
                             <th scope={"col"}>Longitude</th>
                             <th scope={"col"}>Passenger</th>
+                            <th scope={"col"}></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -25,7 +35,12 @@ const requests = (props) => {
                                     <td>{term.numberAddress}</td>
                                     <td>{term.latitude}</td>
                                     <td>{term.longitude}</td>
-                                    <td>{term.passenger.name}</td>
+                                    <td>{term.passenger.name}, {term.passenger.surname}</td>
+                                    <td className={"text-right"}>
+                                        <a title={"Confirm"} id="submit" className={"btn btn-primary"}
+                                            style={{backgroundColor: "cyan", borderColor: "black"}}
+                                            onClick={() => toConfirmedRequest(localStorage.getItem("driverId"), term.id)}>Confirm</a>
+                                    </td>
                                 </tr>
                             )
                         })}
@@ -37,4 +52,4 @@ const requests = (props) => {
     )
 }
 
-export default requests;
+export default Requests;

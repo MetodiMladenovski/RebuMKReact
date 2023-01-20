@@ -22,6 +22,7 @@ const Login = (props) => {
         e.preventDefault();
         RebuMKService.login(formData.username, formData.password).then(resp => {
             if(resp.data.typeOfLoggedUser === "Driver"){
+                localStorage.setItem("driverId", resp.data.idOfLoggedUser)
                 props.onLogin();
                 props.onLoadRequests(resp.data.idOfLoggedUser)
                 navigate("/requests");
