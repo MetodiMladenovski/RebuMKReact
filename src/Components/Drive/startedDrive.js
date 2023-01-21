@@ -1,11 +1,9 @@
 import React from "react";
-import { useNavigate, useLocation } from 'react-router-dom'
-import axios from "../../custom-axios/axios";
+import { useLocation } from 'react-router-dom'
 import CenteredContainer from "../UtilComponents/CenteredContainer";
 
-const ConfirmedRequest = (props) => {
+const StartedDrive = (props) => {
     const location = useLocation();
-    const navigate = useNavigate();
 
     return (
         <CenteredContainer>
@@ -30,4 +28,4 @@ const ConfirmedRequest = (props) => {
     )
 }
 
-export default ConfirmedRequest;
+export default StartedDrive;

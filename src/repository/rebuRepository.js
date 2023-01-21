@@ -22,14 +22,23 @@ const RebuService = {
     getAllDrivers: () => {
         return axios.get("/driver")
     },
+    getUnapprovedDrivers: () => {
+        return axios.get("/driver/unapproved")
+    },
     getAllCreatedRequests: (driverId) => {
-        return axios.get(`/request/${driverId}`)
+        return axios.get(`/request/driver/${driverId}`)
     },
     confirmRequest: (driverId, requestId) => {
         return axios.post(`/request/confirm/${driverId}/${requestId}`)
     },
-    makeRequest: (data, passengerId) => {
-        return axios.post(`/request/make/${passengerId}`, data)
+    makeRequest: (cityAddress, streetAddress, numberAddress, latitude, longitude, passengerId) => {
+        return axios.post(`/request/make/${passengerId}`, {
+            "cityAddress" : cityAddress,
+            "streetAddress" : streetAddress,
+            "numberAddress" : numberAddress,
+            "latitude" : latitude,
+            "longitude" : longitude
+        })
     },
     registerPassenger: (firstName, surname, email, password) => {
         return axios.post("/public/register/passenger", {

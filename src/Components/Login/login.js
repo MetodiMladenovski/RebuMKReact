@@ -25,13 +25,15 @@ const Login = (props) => {
                 localStorage.setItem("driverId", resp.data.idOfLoggedUser)
                 props.onLogin();
                 props.onLoadRequests(resp.data.idOfLoggedUser)
-                navigate("/requests");
+                navigate("/home");
             } else if(resp.data.typeOfLoggedUser === "Passenger"){
+                localStorage.setItem("passengerId", resp.data.idOfLoggedUser)
                 props.onLogin();
-                navigate("/passengers");
+                navigate("/home");
             } else if(resp.data.typeOfLoggedUser === "Admin"){
+                localStorage.setItem("adminId", resp.data.idOfLoggedUser)
                 props.onLogin();
-                navigate("/admins");
+                navigate("/home");
             }
             else {
                 alert("Login unsucessfull, wrong password or email, try again.")

@@ -30,6 +30,9 @@ const registerPassenger = (props) => {
         const email = formData.email
         const password = formData.password
         const repetedPassword = formData.repeatedPassword
+       
+        if(password !== repetedPassword)
+            alert("Passwords don't match");
 
         props.onRegisterPassenger(firstName, surname, email, password);
         navigate("/login")

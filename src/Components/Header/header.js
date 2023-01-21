@@ -5,9 +5,24 @@ const header = (props) => {
     
     let register = (<Link className="nav-link" to={"/register"}>Register</Link>);
     let login = (<Link className="nav-link" to={"/login"}>Login</Link>);
-    let requests = (<Link className="nav-link" to={"/requests"}>Requests</Link>)
-    let drivers = (<Link className="nav-link" to={"/drivers"}>Drivers</Link>)
     let rebumk = (<a style={{marginLeft: 10 + "em"}} className="navbar-brand" href="/home">RebuMK</a>)
+
+    let isLoggedIn
+    let showRegister
+
+    if(localStorage.getItem("driverId") || localStorage.getItem("passengerId") || localStorage.getItem("adminId")){
+        isLoggedIn = true
+        showRegister = ""
+    } else {
+        isLoggedIn = false
+        showRegister = register
+    }
+
+    const logoutUser = () => {
+        localStorage.clear()
+    }
+    let logout = (<a style={{marginLeft: 10 + "em"}} className="nav-link" href="/home" onClick={() => logoutUser()}>Logout</a>)
+
 
     return (
         <header>
@@ -20,18 +35,15 @@ const header = (props) => {
                 <div className="collapse navbar-collapse" id="navbarCollapse">
                     <ul className="navbar-nav mr-auto" style={{marginRight: 40 + "em"}}>
                         <li className="nav-item active">
-                            {requests}
                         </li>
                         <li className="nav-item active">
-                            {drivers}
                         </li>
-
                     </ul>
-                    <form style={{marginLeft: 1 + "em"}} className="form-inline mt-2 mt-md-0 ml-3">
-                        {register}
+                    <form style={{marginLeft: 15 + "em"}} className="form-inline mt-2 mt-md-0 ml-3">
+                        {showRegister}
                     </form>
                     <form style={{marginLeft: 1 + "em"}} className="form-inline mt-2 mt-md-0 ml-3">
-                        {login}
+                        {isLoggedIn ? logout : login}
                     </form>
                 </div>
             </nav>

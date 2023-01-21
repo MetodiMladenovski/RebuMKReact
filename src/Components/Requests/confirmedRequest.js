@@ -29,6 +29,7 @@ const ConfirmedRequest = (props) => {
             "destinationLatitude" : destinationLatitude,
             "destinationLongitude" : destinationLongitude
         })
+        props.onRefreshPassengersMadeRequest();
         navigate('/started-drive', {state: {startedDrive: response.data}})
     }
 

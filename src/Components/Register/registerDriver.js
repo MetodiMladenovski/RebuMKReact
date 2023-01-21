@@ -20,7 +20,6 @@ const registerDriver = (props) => {
         updateFormData({
             ...formData,
             [e.target.name]: e.target.value.trim()
-
         })
     }
 
@@ -32,6 +31,9 @@ const registerDriver = (props) => {
         const password = formData.password
         const repetedPassword = formData.repeatedPassword
         const pricePerKm = formData.pricePerKm
+
+        if(password !== repetedPassword)
+            alert("Passwords don't match");
 
         props.onRegisterDriver(firstName, surname, email, password, pricePerKm);
         navigate("/login")
