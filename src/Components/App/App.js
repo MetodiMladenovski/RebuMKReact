@@ -13,6 +13,7 @@ import ConfirmedRequest from '../Requests/confirmedRequest';
 import StartedDrive from '../Drive/startedDrive';
 import MakeRequest from '../Requests/makeRequest';
 import MadeRequest from '../Requests/madeRequest';
+import Drivers from '../Drivers/drivers'
 
 
 
@@ -22,7 +23,7 @@ class App extends Component {
       super(props);
       this.state = {
           allCreatedRequests: [],
-          availableDrivers: []
+          allDrivers: []
       }
   }
 
@@ -42,9 +43,10 @@ class App extends Component {
                           <Route path={"/registerDriver"} element={<RegisterDriver onRegisterDriver={this.registerDriver}/>}/>
                           <Route path={"/requests"} element={<Requests requests={this.state.allCreatedRequests} />}/>
                           <Route path={"/confirmed-request"} element={<ConfirmedRequest onRefreshPassengersMadeRequest={this.refreshPassengersMadeRequest}/>}/>
-                          <Route path={"/started-drive"} element={<StartedDrive onFinishDrive={this.finishDrive}/>}/>
+                          <Route path={"/started-drive"} element={<StartedDrive onFinishDrive={this.finishDrive} onGradeDrive={this.gradeDrive()}/>}/>
                           <Route path={"/make-request"} element={<MakeRequest onMakeRequest={this.makeRequest}/>}/>
                           <Route path={"/made-request"} element={<MadeRequest />}/>
+                          <Route path={"/drivers"} element={<Drivers drivers={this.state.allDrivers}/>}/>
                       </Routes>
                   </div>
               </main>
@@ -57,6 +59,10 @@ class App extends Component {
         .then(() => {
         
         })
+  }
+
+  gradeDrive = (driveId, grade) => {
+
   }
 
   refreshPassengersMadeRequest = () => {
@@ -97,7 +103,7 @@ class App extends Component {
     RebuMKService.getAllDrivers()
         .then((data) => {
             this.setState({
-                availableDrivers: data.data
+                allDrivers: data.data
             })
         })
   }

@@ -1,10 +1,11 @@
 import React from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate, useLocation} from "react-router-dom";
 import CenteredContainer from "../UtilComponents/CenteredContainer";
 import axios from "../../custom-axios/axios";
 
-const makeRequest = (props) => {
+const MakeRequest = (props) => {
 
+    const location = useLocation();
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const navigate = useNavigate();
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -31,21 +32,34 @@ const makeRequest = (props) => {
         const latitude = formData.latitude;
         const longitude = formData.longitude;
         const passengerId = localStorage.getItem("passengerId");
-
+        let chosenDriverId = null
+        if(location.state){
+            chosenDriverId = location.state.driverId
+        }
         const response = await axios.post(`/request/make/${passengerId}`, {
             "cityAddress" : cityAddress,
             "streetAddress" : streetAddress,
             "numberAddress" : numberAddress,
             "latitude" : latitude,
-            "longitude" : longitude
+            "longitude" : longitude,
+            "chosenDriverId" : chosenDriverId
         })
+        localStorage.setItem("madeRequestId", response.data.id)
         navigate("/made-request", {state: {madeRequest: response.data}})
+    }
+
+    let showChosenDriver
+    if(location.state){
+        showChosenDriver = <p style={{color: "green", fontStyle: "bold"}}>You picked the driver with name {location.state.driverName}. 
+        <br></br>
+        Add your address to compled the request.</p>
     }
 
     return(
         <CenteredContainer>
             <h2 style={{textAlign: "center", color: "#00CED1"}}>Make Request</h2>
             <hr></hr>
+            {showChosenDriver}
             <br></br>
             <h6 style={{textAlign: "center"}}>Your current(pick up) address:</h6>
             <br></br>
@@ -119,4 +133,4 @@ const makeRequest = (props) => {
 
 }
 
-export default makeRequest;
+export default MakeRequest;

@@ -32,7 +32,13 @@ const MadeRequest = (props) => {
 
     const joinDriveForPassenger = async () => {
         const requestId = location.state.madeRequest.id
-        const response = await axios.get(`/drive/request/${requestId}`);
+        const response = await axios.get(`/drive/request/${requestId}`)
+        .catch(function (error) {
+            if (error.response) {
+              alert("Wait for the driver to pick you up and start the drive. Then you can join.")
+            }
+          });
+        localStorage.removeItem("madeRequestId")
         navigate("/started-drive", {state: {startedDrive: response.data}})
     }
 
