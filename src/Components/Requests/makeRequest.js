@@ -3,7 +3,7 @@ import { useNavigate, useLocation} from "react-router-dom";
 import CenteredContainer from "../UtilComponents/CenteredContainer";
 import axios from "../../custom-axios/axios";
 
-const MakeRequest = (props) => {
+const MakeRequest = () => {
 
     const location = useLocation();
     // eslint-disable-next-line react-hooks/rules-of-hooks

@@ -3,8 +3,8 @@ import {Link} from 'react-router-dom';
 
 const header = (props) => {
     
-    let register = (<Link className="nav-link" to={"/register"}>Register</Link>);
-    let login = (<Link className="nav-link" to={"/login"}>Login</Link>);
+    let register = (<Link style={{backgroundColor: "cyan", padding: 0.4 +"em"}} className="nav-link btn btn-primary" to={"/register"}>Register</Link>);
+    let login = (<Link style={{backgroundColor: "cyan", padding: 0.4 +"em"}} className="nav-link btn btn-primary" to={"/login"}>Login</Link>);
     let rebumk = (<a style={{marginLeft: 10 + "em"}} className="navbar-brand" href="/home">RebuMK</a>)
 
     let isLoggedIn
@@ -21,7 +21,7 @@ const header = (props) => {
     const logoutUser = () => {
         localStorage.clear()
     }
-    let logout = (<a style={{marginLeft: 10 + "em"}} className="nav-link" href="/home" onClick={() => logoutUser()}>Logout</a>)
+    let logout = (<a style={{marginLeft: 10 + "em", backgroundColor: "coral", padding: 0.4 +"em"}} className="nav-link btn btn-primary" href="/home" onClick={() => logoutUser()}>Logout</a>)
 
 
     return (

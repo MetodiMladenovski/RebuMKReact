@@ -1,11 +1,18 @@
 import axios from "../custom-axios/axios";
 
 const RebuService = {
-    addCarForDriver: (driverId, data) => {
-        return axios.post(`/car/add/${driverId}`, data)
+    addCarForDriver: (driverId, licensePlate, make, model, year) => {
+        return axios.post(`/car/add/${driverId}`, {
+            "licensePlate" : licensePlate,
+            "make" : make,
+            "model" : model,
+            "year": year
+        })
     },
-    finishDrive: (driveId) => {
-        return axios.post(`/drive/finish/${driveId}`)
+    finishDrive: (driveId, kmTravelled) => {
+        return axios.post(`/drive/finish/${driveId}`, null, {params: {
+            kmTravelled
+        }})
     },
     startDrive: (requestId, driverId, destinationLatitude, destinationLongitude) => {
         return axios.post(`/drive/start/${requestId}/${driverId}`, {
@@ -28,17 +35,8 @@ const RebuService = {
     getAllCreatedRequests: (driverId) => {
         return axios.get(`/request/driver/${driverId}`)
     },
-    confirmRequest: (driverId, requestId) => {
-        return axios.post(`/request/confirm/${driverId}/${requestId}`)
-    },
-    makeRequest: (cityAddress, streetAddress, numberAddress, latitude, longitude, passengerId) => {
-        return axios.post(`/request/make/${passengerId}`, {
-            "cityAddress" : cityAddress,
-            "streetAddress" : streetAddress,
-            "numberAddress" : numberAddress,
-            "latitude" : latitude,
-            "longitude" : longitude
-        })
+    getAllPayments: () => {
+        return axios.get("/payment")
     },
     registerPassenger: (firstName, surname, email, password) => {
         return axios.post("/public/register/passenger", {

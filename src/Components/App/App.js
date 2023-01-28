@@ -11,10 +11,15 @@ import RegisterPassenger from "../Register/registerPassenger";
 import Requests from "../Requests/requests";
 import ConfirmedRequest from '../Requests/confirmedRequest';
 import StartedDrive from '../Drive/startedDrive';
+import GradeDrive from '../Drive/gradeDrive'
+import PayDrive from '../Drive/pay-drive'
 import MakeRequest from '../Requests/makeRequest';
 import MadeRequest from '../Requests/madeRequest';
 import Drivers from '../Drivers/drivers'
-
+import UnapprovedDrivers from '../Drivers/unapprovedDrivers';
+import Car from '../Cars/car'
+import AddCar from '../Cars/addCar'
+import Payments from '../Payments/payments'
 
 
 class App extends Component {
@@ -23,7 +28,9 @@ class App extends Component {
       super(props);
       this.state = {
           allCreatedRequests: [],
-          allDrivers: []
+          allApprovedDrivers: [],
+          allUnApprovedDrivers: [],
+          payments: []
       }
   }
 
@@ -43,10 +50,16 @@ class App extends Component {
                           <Route path={"/registerDriver"} element={<RegisterDriver onRegisterDriver={this.registerDriver}/>}/>
                           <Route path={"/requests"} element={<Requests requests={this.state.allCreatedRequests} />}/>
                           <Route path={"/confirmed-request"} element={<ConfirmedRequest onRefreshPassengersMadeRequest={this.refreshPassengersMadeRequest}/>}/>
-                          <Route path={"/started-drive"} element={<StartedDrive onFinishDrive={this.finishDrive} onGradeDrive={this.gradeDrive()}/>}/>
-                          <Route path={"/make-request"} element={<MakeRequest onMakeRequest={this.makeRequest}/>}/>
+                          <Route path={"/started-drive"} element={<StartedDrive />}/>
+                          <Route path={"/grade-drive"} element={<GradeDrive />}/>
+                          <Route path={"/pay-drive"} element={<PayDrive />}/>
+                          <Route path={"/make-request"} element={<MakeRequest />}/>
                           <Route path={"/made-request"} element={<MadeRequest />}/>
-                          <Route path={"/drivers"} element={<Drivers drivers={this.state.allDrivers}/>}/>
+                          <Route path={"/drivers"} element={<Drivers drivers={this.state.allApprovedDrivers} />}/>
+                          <Route path={"/unapproved-drivers"} element={<UnapprovedDrivers drivers={this.state.allUnApprovedDrivers} onApproveDriver={this.approveDriver}/>}/>
+                          <Route path={"/car"} element={<Car />}/>
+                          <Route path={"/add-car"} element={<AddCar onAddCar={this.addCar} />}/>
+                          <Route path={"/payments"} element={<Payments payments={this.state.payments} />}/>
                       </Routes>
                   </div>
               </main>
@@ -54,40 +67,22 @@ class App extends Component {
       )
   }
 
-  finishDrive = (driveId) => {
-    RebuMKService.finishDrive(driveId)
-        .then(() => {
-        
-        })
+  approveDriver = (driverId) => {
+    RebuMKService.approveDriver(driverId)
+    .then(() => {
+        this.fetchData()
+    })
   }
 
-  gradeDrive = (driveId, grade) => {
-
+  addCar = (driverId, licensePlate, make, model, year) => {
+    RebuMKService.addCarForDriver(driverId, licensePlate, make, model, year)
+    .then(() => {
+        this.fetchData()
+    })
   }
 
   refreshPassengersMadeRequest = () => {
     <MadeRequest />
-  }
-
-  startDrive = (requestId, driverId, destinationLatitude, destinationLongitude) => {
-    RebuMKService.startDrive(requestId, driverId, destinationLatitude, destinationLongitude)
-        .then((data) => {
-            this.startedDrive = data;
-        })
-  }
-
-  makeRequest = (cityAddress, streetAddress, numberAddress, latitude, longitude, passengerId) => {
-    RebuMKService.makeRequest(cityAddress, streetAddress, numberAddress, latitude, longitude, passengerId)
-        .then((data) => {
-            this.startedDrive = data;
-        })
-  }
-
-  confirmRequest = (driverId, requestId) => {
-    RebuMKService.confirmRequest(driverId, requestId)
-          .then((data) => {
-            this.confirmRequest = data;
-        })
   }
 
   loadRequests = (driverId) => {
@@ -99,14 +94,33 @@ class App extends Component {
           })
   }
 
-  loadDrivers = () => {
-    RebuMKService.getAllDrivers()
+  loadPayments = () => {
+    RebuMKService.getAllPayments()
         .then((data) => {
             this.setState({
-                allDrivers: data.data
+                payments: data.data
             })
         })
   }
+
+  loadApprovedDrivers = () => {
+    RebuMKService.getAllDrivers()
+        .then((data) => {
+            this.setState({
+                allApprovedDrivers: data.data
+            })
+        })
+  }
+
+  loadUnApprovedDrivers = () => {
+    RebuMKService.getUnapprovedDrivers()
+        .then((data) => {
+            this.setState({
+                allUnApprovedDrivers: data.data
+            })
+        })
+  }
+
   registerDriver = (firstName, surname, email, password, pricePerKm) => {
     RebuMKService.registerDriver(firstName, surname, email, password, pricePerKm)
         .then(() => {
@@ -128,7 +142,9 @@ class App extends Component {
     if(localStorage.getItem("driverId")){
       this.loadRequests(localStorage.getItem("driverId"));
     } else {
-        this.loadDrivers()
+        this.loadApprovedDrivers()
+        this.loadUnApprovedDrivers()
+        this.loadPayments()
     }
   }
 }

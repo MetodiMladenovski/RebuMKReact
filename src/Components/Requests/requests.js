@@ -12,6 +12,8 @@ const Requests = (props) => {
 
     return(
         <div className={"container mm-4 mt-5"}>
+            <h2 style={{textAlign: "center", color: "#00CED1"}}>Requests</h2>      
+            <hr></hr>
             <div className={"row"}>
                 <div className={"row"}>
                     <table className={"table table-striped"}>
@@ -29,7 +31,7 @@ const Requests = (props) => {
                         <tbody>
                         {props.requests.map((term) => {
                             return(
-                                <tr>
+                                <tr style={ term.chosenDriver != null ? { backgroundColor:'lightgreen'} : {}}>
                                     <td>{term.cityAddress}</td>
                                     <td>{term.streetAddress}</td>
                                     <td>{term.numberAddress}</td>
@@ -38,7 +40,7 @@ const Requests = (props) => {
                                     <td>{term.passenger.name}, {term.passenger.surname}</td>
                                     <td className={"text-right"}>
                                         <a title={"Confirm"} id="submit" className={"btn btn-primary"}
-                                            style={{backgroundColor: "cyan", borderColor: "black"}}
+                                            style={{backgroundColor: "darkcyan", borderColor: "black"}}
                                             onClick={() => toConfirmedRequest(localStorage.getItem("driverId"), term.id)}>Confirm</a>
                                     </td>
                                 </tr>
