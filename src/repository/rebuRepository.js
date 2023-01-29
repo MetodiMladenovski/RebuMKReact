@@ -1,23 +1,21 @@
 import axios from "../custom-axios/axios";
 
 const RebuService = {
+    getAdminReport: () => {
+        return axios.get("/reports/admin/")
+    },
+    getDriverReport: (driverId) => {
+        return axios.get(`/reports/driver/${driverId}`)
+    },
+    getPassengerReport: (passengerId) => {
+        return axios.get(`/reports/passenger/${passengerId}`)
+    },
     addCarForDriver: (driverId, licensePlate, make, model, year) => {
         return axios.post(`/car/add/${driverId}`, {
             "licensePlate" : licensePlate,
             "make" : make,
             "model" : model,
             "year": year
-        })
-    },
-    finishDrive: (driveId, kmTravelled) => {
-        return axios.post(`/drive/finish/${driveId}`, null, {params: {
-            kmTravelled
-        }})
-    },
-    startDrive: (requestId, driverId, destinationLatitude, destinationLongitude) => {
-        return axios.post(`/drive/start/${requestId}/${driverId}`, {
-            "destinationLatitude" : destinationLatitude,
-            "destinationLongitude" : destinationLongitude
         })
     },
     approveDriver: (driverId) => {

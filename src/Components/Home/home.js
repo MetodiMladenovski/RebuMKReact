@@ -33,7 +33,7 @@ const Home = (props) => {
     let requests = (<Link style={{backgroundColor: "#00CED1", borderColor: "black", color: "black"}} className="btn btn-primary" to={"/requests"}>See Requests</Link>)
     let register = (<Link style={{backgroundColor: "#00CED1", borderColor: "black", color: "black"}} className="btn btn-primary" to={"/register"}>Register</Link>);
     let login = (<Link style={{backgroundColor: "#00CED1", borderColor: "black", color: "black"}} className="btn btn-primary" to={"/login"}>Login</Link>);
-
+    
     let buttonOne
     let buttonTwo
     let buttonThree

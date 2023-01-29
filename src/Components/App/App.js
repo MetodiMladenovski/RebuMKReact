@@ -20,6 +20,9 @@ import UnapprovedDrivers from '../Drivers/unapprovedDrivers';
 import Car from '../Cars/car'
 import AddCar from '../Cars/addCar'
 import Payments from '../Payments/payments'
+import AdminReport from '../Reports/adminReport'
+import DriverReport from '../Reports/driverReport'
+import PassengerReport from '../Reports/passengerReport'
 
 
 class App extends Component {
@@ -30,7 +33,10 @@ class App extends Component {
           allCreatedRequests: [],
           allApprovedDrivers: [],
           allUnApprovedDrivers: [],
-          payments: []
+          payments: [],
+          adminReport: [],
+          passengerReport: [],
+          driverReport: []
       }
   }
 
@@ -60,11 +66,42 @@ class App extends Component {
                           <Route path={"/car"} element={<Car />}/>
                           <Route path={"/add-car"} element={<AddCar onAddCar={this.addCar} />}/>
                           <Route path={"/payments"} element={<Payments payments={this.state.payments} />}/>
+                          <Route path={"/report/admin"} element={<AdminReport report={this.state.adminReport} />}/>
+                          <Route path={"/report/driver"} element={<DriverReport report={this.state.driverReport} />}/>
+                          <Route path={"/report/passenger"} element={<PassengerReport report={this.state.passengerReport} />}/>
                       </Routes>
                   </div>
               </main>
           </Router>
       )
+  }
+  
+  
+  loadAdminReport = () => {
+      RebuMKService.getAdminReport()
+          .then((data) => {
+              this.setState({
+                  adminReport: data.data
+              })
+          })
+  }
+
+  loadDriverReport = (driverId) => {
+      RebuMKService.getDriverReport(driverId)
+          .then((data) => {
+              this.setState({
+                  driverReport: data.data
+              })
+          })
+  }
+
+  loadPassengerReport = (passengerId) => {
+      RebuMKService.getPassengerReport(passengerId)
+          .then((data) => {
+              this.setState({
+                  passengerReport: data.data
+              })
+          })
   }
 
   approveDriver = (driverId) => {
@@ -140,11 +177,16 @@ class App extends Component {
 
   fetchData = () =>  {
     if(localStorage.getItem("driverId")){
-      this.loadRequests(localStorage.getItem("driverId"));
-    } else {
+        const driverId = localStorage.getItem("driverId");
+        this.loadRequests(driverId);
+        this.loadDriverReport(driverId)
+    } else if(localStorage.getItem("passengerId")){
         this.loadApprovedDrivers()
+        this.loadPassengerReport(localStorage.getItem("passengerId"))
+    } else if(localStorage.getItem("adminId")){
         this.loadUnApprovedDrivers()
         this.loadPayments()
+        this.loadAdminReport()
     }
   }
 }
