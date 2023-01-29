@@ -2,7 +2,7 @@ import axios from "../custom-axios/axios";
 
 const RebuService = {
     getAdminReport: () => {
-        return axios.get("/reports/admin/")
+        return axios.get("/reports/admin")
     },
     getDriverReport: (driverId) => {
         return axios.get(`/reports/driver/${driverId}`)
