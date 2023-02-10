@@ -6,9 +6,9 @@ const header = (props) => {
     let register = (<Link style={{backgroundColor: "cyan", padding: 0.4 +"em"}} className="nav-link btn btn-primary" to={"/register"}>Register</Link>);
     let login = (<Link style={{backgroundColor: "cyan", padding: 0.4 +"em"}} className="nav-link btn btn-primary" to={"/login"}>Login</Link>);
     let rebumk = (<a style={{marginLeft: 10 + "em"}} className="navbar-brand" href="/home">RebuMK</a>)
-    let adminReport = (<Link style={{color: "black"}} className="nav-link" to={"/report/admin"}>See Report</Link>);
-    let driverReport = (<Link style={{color: "black"}} className="nav-link" to={"/report/driver"}>See Report</Link>);
-    let passengerReport = (<Link style={{color: "black"}} className="nav-link" to={"/report/passenger"}>See Report</Link>);
+    let adminReport = (<Link style={{marginLeft: 1 +"em", color: "black"}} className="nav-link" to={"/report/admin"}>Check Report</Link>);
+    let driverReport = (<Link style={{marginLeft: 1 +"em", color: "black"}} className="nav-link" to={"/report/driver"}>Check Report</Link>);
+    let passengerReport = (<Link style={{marginLeft: 1 +"em", color: "black"}} className="nav-link" to={"/report/passenger"}>Check Report</Link>);
 
 
     let isLoggedIn
@@ -40,6 +40,7 @@ const header = (props) => {
         <header>
             <nav style={{ borderRadius: 2 + "em"}} className="navbar navbar-expand-md navbar-light navbar-fixed bg-light">
                 {rebumk}
+                <img src={require("../../images/logo.PNG")} alt="logo" style={{width: 4.5 + "em", height: 1.7 + "em", alignSelf: 'center'}}></img>
                 {report}
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">

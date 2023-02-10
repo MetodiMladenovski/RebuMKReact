@@ -32,7 +32,7 @@ const AdminReport = (props) => {
                                     <td>{term.driverName} {term.driverSurname}</td>
                                     <td>{term.make}</td>
                                     <td>{term.model} MKD</td>
-                                    <td>{term.driverGrade} MKD</td>
+                                    <td>{term.driverGrade}</td>
                                     <td>{term.numberOfDrives}</td>
                                     <td>{term.totalMoneyMade}</td>
                                     <td>{term.numberOfDifferentRequests}</td>

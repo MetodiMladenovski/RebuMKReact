@@ -47,7 +47,7 @@ class App extends Component {
               <main>
                   <div className={"container"}>
                       <Routes>
-                          <Route path={"/"} element={<Login onLogin={this.fetchData} onLoadRequests={this.loadRequests}/>}/>
+                          <Route path={"/"} element={<Home />}/>
                           <Route path={"/home"} element={<Home />}/>
                           <Route path={"/login"} element={<Login onLogin={this.fetchData} onLoadRequests={this.loadRequests}/>}/>
                           <Route path={"/register"} element={<Register />}/>
