@@ -3,8 +3,8 @@ import React from "react";
 const PassengerReport = (props) => {
 
     return(
-        <div className={"container mm-4 mt-5"}>
-            <h2 style={{textAlign: "center", color: "#00CED1"}}>Report on your drivers and drives</h2>      
+        <div style={{width: "85%", margin: 'auto'}} className={"container mm-4 mt-5"}>
+            <h2 style={{textAlign: "center", color: "darkcyan"}}>Report on your drivers and drives</h2>      
             <hr></hr>
             <div className={"row"}>
                 <div className={"row"}>

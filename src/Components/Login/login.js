@@ -44,8 +44,8 @@ const Login = (props) => {
 
     return (
         <CenteredContainer>
-            <h3 style={{textAlign: "center", color: "#00CED1"}}>RebuMK</h3>
-            <h5 style={{textAlign: "center", color: "#00CED1"}}>Login to your account</h5>
+            <h3 style={{textAlign: "center", color: "darkcyan"}}>RebuMK</h3>
+            <h5 style={{textAlign: "center", color: "darkcyan"}}>Login to your account</h5>
             <hr></hr>
                 <form onSubmit={onFormSubmit}>
                     <div className="form-group">
@@ -72,7 +72,7 @@ const Login = (props) => {
                         />
                     </div>
                     <br></br>
-                    <button id="submit" type="submit" className="btn btn-primary" style={{marginLeft: 8 + "em"}}>Login</button>
+                    <button id="submit" type="submit" className="btn btn-primary" style={{marginLeft: "8em", backgroundColor: "darkcyan", borderColor: "black"}}>Login</button>
                 </form>
         </CenteredContainer>
     )

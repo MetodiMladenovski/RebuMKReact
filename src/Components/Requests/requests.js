@@ -1,6 +1,11 @@
 import React from "react";
 import axios from "../../custom-axios/axios";
 import { useNavigate } from 'react-router-dom'
+import CenteredContainer from "../UtilComponents/CenteredContainer";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css';
+import markerIconPng from "leaflet/dist/images/marker-icon.png"
+import {Icon} from 'leaflet'
 
 const Requests = (props) => {
     const navigate = useNavigate();
@@ -11,12 +16,12 @@ const Requests = (props) => {
     };
 
     return(
-        <div className={"container mm-4 mt-5"}>
-            <h2 style={{textAlign: "center", color: "#00CED1"}}>Requests</h2>      
-            <hr></hr>
+        <div className={"container mm-4 mt-5"} style={{width: "85%", margin: 'auto'}}>
+            <h2 style={{textAlign: 'center', color: "darkcyan"}}>Requests</h2>    
+            <hr></hr>  
             <div className={"row"}>
-                <div className={"row"}>
-                    <table className={"table table-striped"}>
+                <div className={"row"} style={{margin: 'auto'}}>
+                    <table className={"table table-hover"} >
                         <thead>
                         <tr>
                             <th scope={"col"}>City</th>
@@ -37,7 +42,7 @@ const Requests = (props) => {
                                     <td>{term.numberAddress}</td>
                                     <td>{term.latitude}</td>
                                     <td>{term.longitude}</td>
-                                    <td>{term.passenger.name}, {term.passenger.surname}</td>
+                                    <td>{term.passenger.name} {term.passenger.surname}</td>
                                     <td className={"text-right"}>
                                         <a title={"Confirm"} id="submit" className={"btn btn-primary"}
                                             style={{backgroundColor: "darkcyan", borderColor: "black"}}
@@ -50,6 +55,22 @@ const Requests = (props) => {
                     </table>
                 </div>
             </div>
+            <MapContainer className="border border-info rounded-2" center={[41.9943, 21.4309]} zoom={13} scrollWheelZoom={true} style={{position: 'relative', zIndex: 0, marginBottom: "50px"}}>
+                <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                {props.requests.map((term) => {
+                    return(
+                        <Marker position={[term.latitude, term.longitude]} icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
+                            <Popup position={[term.latitude, term.longitude+0.23]}>
+                                <p>{term.passenger.name} {term.passenger.surname}</p>
+                                <p>{term.cityAddress}, {term.streetAddress}, {term.numberAddress}</p>
+                            </Popup>
+                        </Marker>
+                    )
+                })}       
+            </MapContainer>
         </div>
     )
 }

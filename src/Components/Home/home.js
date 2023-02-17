@@ -60,7 +60,7 @@ const Home = (props) => {
 
     return (
         <CenteredContainer>
-            <h2 style={{textAlign: "center", color: "#00CED1"}}>Welcome to RebuMK</h2>       
+            <h2 style={{textAlign: "center", color: "darkcyan"}}>Welcome to RebuMK</h2>       
             <hr></hr>
             <p style={{textAlign: "center"}}> {buttonOne}</p>   
             <hr></hr> 

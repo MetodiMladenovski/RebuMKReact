@@ -23,6 +23,7 @@ import Payments from '../Payments/payments'
 import AdminReport from '../Reports/adminReport'
 import DriverReport from '../Reports/driverReport'
 import PassengerReport from '../Reports/passengerReport'
+import Footer from '../Footer/footer'
 
 
 class App extends Component {
@@ -72,6 +73,7 @@ class App extends Component {
                       </Routes>
                   </div>
               </main>
+              <Footer/>
           </Router>
       )
   }
@@ -172,7 +174,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-      this.fetchData();
+    document.body.style.backgroundColor = "#f1faee"
+    this.fetchData();
   }
 
   fetchData = () =>  {

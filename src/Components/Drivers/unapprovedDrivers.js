@@ -23,7 +23,7 @@ const UnapprovedDrivers = (props) => {
             <hr></hr>
             <div className={"row"}>
                 <div className={"row"}>
-                    <table className={"table table-striped"}>
+                    <table className={"table table-hover"}>
                         <thead>
                         <tr>
                             <th scope={"col"}>Name</th>

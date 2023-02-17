@@ -9,47 +9,33 @@ const Drivers = (props) => {
     };
 
     return(
-        <div className={"container mm-4 mt-5"}>
-            <h2 style={{textAlign: "center", color: "#00CED1"}}>Drivers</h2>      
-            <hr></hr> 
-            <div className={"row"}>
-                <div className={"row"}>
-                    <table className={"table table-striped"}>
-                        <thead>
-                        <tr>
-                            <th scope={"col"}>Name</th>
-                            <th scope={"col"}>Surname</th>
-                            <th scope={"col"}>Price per kilometer</th>
-                            <th scope={"col"}>Status</th>
-                            <th scope={"col"}>Level</th>
-                            <th scope={"col"}>Number of grades</th>
-                            <th scope={"col"}>Grade</th>
-                            <th scope={"col"}></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {props.drivers.map((term) => {
-                            return(
-                                <tr>
-                                    <td>{term.name}</td>
-                                    <td>{term.surname}</td>
-                                    <td>{term.pricePerKm}</td>
-                                    <td>{term.status}</td>
-                                    <td>{term.level}</td>
-                                    <td>{term.numGrades}</td>
-                                    <td>{term.grade}</td>
-                                    <td className={"text-right"}>
-                                        <a title={"Request Driver"} id="submit" className={"btn btn-primary"}
-                                            style={{backgroundColor: "cyan", borderColor: "black"}}
-                                            onClick={() => makeRequestForDriver(term.id, term.name)}>Request Driver</a>
-                                    </td>
-                                </tr>
-                            )
-                        })}
-                        </tbody>
-                    </table>
+        <div class="row row-cols-1 row-cols-md-3 g-4" style={{width: '80%', margin: 'auto', marginBottom: '40px'}}>
+            {props.drivers.map((term) => {
+                const IMAGE_SRC = `http://localhost:8080/driver/${term.id}/profile/picture`;
+             return(
+                <div class="col">
+                    <div class="card">
+                    <img src={IMAGE_SRC} class="card-img-top" alt="Driver doesn't have an image"/>
+                    <div class="card-body">
+                        <h5 class="card-title">{term.name} {term.surname}</h5>
+                        <p style={term.status != 'AVAILABLE' ? { color: 'red' } : {color: 'green'}}>
+                            Status: {term.status}</p>
+                        <p class="card-text">
+                            Price per kilometer: {term.pricePerKm} MKD
+                        <br></br>
+                        Level: {term.level}
+                        <br></br>
+                        Number of grades: {term.numGrades}
+                        <br></br>
+                        Grade: {term.grade}
+                        </p>
+                        <a title={"Request Driver"} id="submit" className={"btn btn-primary"}
+                            style={{backgroundColor: "cyan", borderColor: "black", color: 'black'}}
+                            onClick={() => makeRequestForDriver(term.id, term.name)}>Request Driver</a>
+                    </div>
+                    </div>
                 </div>
-            </div>
+            )})}
         </div>
     )
 }

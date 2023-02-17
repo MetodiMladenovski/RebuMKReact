@@ -6,9 +6,9 @@ const Car = () => {
     const location = useLocation();
 
 
-    let driverButton = <a href="/home" className="btn btn-primary" style={{backgroundColor: "darkcyan"}}>Go back</a>
+    let driverButton = <a href="/home" className="btn btn-primary" style={{backgroundColor: "darkcyan",  borderColor: 'black'}}>Go back</a>
 
-    let adminButton = <a href="/unapproved-drivers" className="btn btn-primary" style={{backgroundColor: "darkcyan"}}>Go back</a>
+    let adminButton = <a href="/unapproved-drivers" className="btn btn-primary" style={{backgroundColor: "darkcyan", borderColor: 'black'}}>Go back</a>
 
     let button
     if(localStorage.getItem("driverId")){

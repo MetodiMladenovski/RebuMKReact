@@ -3,20 +3,24 @@ import CenteredContainer from "../UtilComponents/CenteredContainer";
 
 const register = (props) => {
     
-    let registerDriver = (<a style={{backgroundColor: "cyan", float: "center", marginLeft: 5.5 +"em"}} class="btn" href="/registerDriver">REGISTER DRIVER</a>);
-    let registerPassenger = (<a style={{backgroundColor: "palegreen", float: "center", marginLeft: 4.5 + "em"}} class="btn" href="/registerPassenger">REGISTER PASSENGER</a>);
-    let login = (<a style={{backgroundColor: "gray", position: "inline", marginLeft: 8 +"em"}} class="btn" href="/login">Login</a>)
+    let registerDriver = (<a style={{backgroundColor: "cyan", float: "center",  borderColor: "black", color:'black'}} className="btn btn-primary" href="/registerDriver">REGISTER DRIVER</a>);
+    let registerPassenger = (<a style={{backgroundColor: "darkcyan", float: "center", borderColor: "black", color:'white'}} className="btn btn-primary" href="/registerPassenger">REGISTER PASSENGER</a>);
+    let login = (<a style={{backgroundColor: "#dce1de", borderColor: "black", color:'black'}} className="link" href="/login">here</a>)
 
     return (
         <CenteredContainer>
-            <h4>Choose as what would you like to register:</h4>
-            {registerDriver}
+            <h4 style={{textAlign:'center'}}>Choose as what would you like to register:</h4>
             <hr></hr>
-            {registerPassenger}
+            <div className="d-grid gap-2 col-6 mx-auto">
+                {registerDriver}
+            </div>
+            <hr></hr>
+            <div className="d-grid gap-2 col-6 mx-auto">
+                {registerPassenger}
+            </div>
             <hr></hr>
             <hr></hr>
-            <p style={{marginLeft: 5.5 +"em"}}> Or you can login here</p>
-            {login}
+            <p style={{textAlign: 'center'}}> Or you can login {login}.</p>
         </CenteredContainer>
     )
 }

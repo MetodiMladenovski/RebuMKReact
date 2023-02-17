@@ -40,7 +40,7 @@ const registerPassenger = (props) => {
 
     return(
         <CenteredContainer>
-            <h3 style={{textAlign: "center", color: "#00CED1"}}>Register Passenger</h3>
+            <h3 style={{textAlign: "center", color: "darkcyan"}}>Register Passenger</h3>
             <br></br>
                 <form onSubmit={onFormSubmit}>
                     <div className="form-group">
@@ -105,7 +105,9 @@ const registerPassenger = (props) => {
                         />
                     </div>
                     <br></br>
-                    <button id="submit" type="submit" className="btn btn-primary" style={{marginLeft: 8 + "em"}}>Register</button>
+                    <div className="d-grid gap-2 col-6 mx-auto">
+                        <button id="submit" type="submit" className="btn btn-primary" style={{backgroundColor: "darkcyan", float: "center",  borderColor: "black", color:'white'}}>Register</button>
+                    </div>                
                 </form>
         </CenteredContainer>
     )
