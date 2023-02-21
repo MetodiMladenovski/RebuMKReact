@@ -22,8 +22,13 @@ const ConfirmedRequest = (props) => {
             "destinationLatitude" : destinationLatitude,
             "destinationLongitude" : destinationLongitude
         })
+        const startLatitude = location.state.confirmedRequest.latitude;
+        const startLongitude = location.state.confirmedRequest.longitude;
+        if(!(destinationLatitude && destinationLongitude)){
+            alert("Must choose destination address for passenger on the map.")
+        }
         props.onRefreshPassengersMadeRequest();
-        navigate('/started-drive', {state: {startedDrive: response.data}})
+        navigate('/started-drive', {state: {startedDrive: response.data, startLatitude: startLatitude, startLongitude: startLongitude}})
     }
 
     function LocationMarker() {      
@@ -44,7 +49,9 @@ const ConfirmedRequest = (props) => {
           })
         return position === null ? null : (
           <Marker position={position}  icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
-            <Popup>You are here</Popup>
+            <Popup><p>This is the passenger's 
+                <br></br>
+                destination location.</p></Popup>
           </Marker>
         )
       }
@@ -57,7 +64,6 @@ const ConfirmedRequest = (props) => {
             </div>
             <div className="card-body">
                 <h5 className="card-title">{location.state.confirmedRequest.cityAddress}, {location.state.confirmedRequest.streetAddress}, {location.state.confirmedRequest.numberAddress}</h5>
-                <h6 className="card-title">{location.state.confirmedRequest.latitude}, {location.state.confirmedRequest.longitude}</h6>
                 <p className="card-text">Passenger: {location.state.confirmedRequest.passenger.name} {location.state.confirmedRequest.passenger.surname}</p>                
                 <br></br>
                 <label htmlFor="MapContainer" style={{color: 'red'}}>After picking your passenger, 

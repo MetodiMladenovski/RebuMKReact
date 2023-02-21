@@ -25,8 +25,12 @@ const GradeDrive = (props) => {
         const updatedDrive = await axios.post(`/drive/grade/${driveId}`, null, { params: {
             gradeNum
           }
-        })       
-        navigate("/started-drive", {state: {startedDrive: updatedDrive.data}})
+        })
+        const requestForDrive = await axios.get(`/request/${updatedDrive.data.request.id}`)
+        console.log(requestForDrive.data.latitude, requestForDrive.data.longitude)
+        navigate("/started-drive", {state: {startedDrive: updatedDrive.data, 
+            startLatitude: requestForDrive.data.latitude,
+            startLongitude: requestForDrive.data.longitude}})
     }
 
     return (

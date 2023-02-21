@@ -4,7 +4,7 @@ const DriverReport = (props) => {
 
     return(
         <div style={{width: "85%", margin: 'auto'}} className={"container mm-4 mt-5"}>
-            <h2 style={{textAlign: "center", color: "#00CED1"}}>Report on your passengers</h2>      
+            <h2 style={{textAlign: "center", color: "darkcyan"}}>Report on your passengers</h2>      
             <hr></hr>
             <div className={"row"}>
                 <div className={"row"}>

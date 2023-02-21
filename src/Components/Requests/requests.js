@@ -65,6 +65,9 @@ const Requests = (props) => {
                             <Popup position={[term.latitude, term.longitude]}>
                                 <p>{term.passenger.name} {term.passenger.surname}</p>
                                 <p>{term.cityAddress}, {term.streetAddress}, {term.numberAddress}</p>
+                                <a title={"Confirm"} id="submit" className={"btn btn-primary"}
+                                            style={{backgroundColor: "darkcyan", borderColor: "black", color: 'white'}}
+                                            onClick={() => toConfirmedRequest(localStorage.getItem("driverId"), term.id)}>Confirm</a>
                             </Popup>
                         </Marker>
                     )

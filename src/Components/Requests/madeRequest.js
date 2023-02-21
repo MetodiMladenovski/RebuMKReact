@@ -39,11 +39,13 @@ const MadeRequest = (props) => {
         const response = await axios.get(`/drive/request/${requestId}`)
         .catch(function (error) {
             if (error.response) {
-              alert("Wait for the driver to pick you up and start the drive. Then you can join.")
+              alert("Wait for the driver to pick you up and start the drive. Then you can join.");
             }
           });
         localStorage.removeItem("madeRequestId")
-        navigate("/started-drive", {state: {startedDrive: response.data}})
+        const startLatitude = formData.latitude;
+        const startLongitude = formData.longitude;
+        navigate("/started-drive", {state: {startedDrive: response.data, startLatitude: startLatitude, startLongitude: startLongitude}})
     }
 
     let messageAfterConfirmation1 = ""
@@ -77,7 +79,6 @@ const MadeRequest = (props) => {
             <div className="card-body">
                 <h6 className="card-title" style={{color : "darkcyan"}}>You have created your request, please wait until some driver confirms it</h6>
                 <h5 className="card-title">{formData.cityAddress}, {formData.streetAddress}, {formData.numberAddress}</h5>
-                <h6 className="card-title">{formData.latitude}, {formData.longitude}</h6>
                 {confirmedByDriver}
             </div>
             <br></br>

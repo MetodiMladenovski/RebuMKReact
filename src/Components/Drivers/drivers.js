@@ -14,8 +14,8 @@ const Drivers = (props) => {
                 const IMAGE_SRC = `http://localhost:8080/driver/${term.id}/profile/picture`;
              return(
                 <div class="col">
-                    <div class="card">
-                    <img src={IMAGE_SRC} class="card-img-top" alt="Driver doesn't have an image"/>
+                    <div class="card" >
+                    <img src={IMAGE_SRC} class="card-img-top" alt="Driver doesn't have an image" style={{height: '285px'}}/>
                     <div class="card-body">
                         <h5 class="card-title">{term.name} {term.surname}</h5>
                         <p style={term.status != 'AVAILABLE' ? { color: 'red' } : {color: 'green'}}>
