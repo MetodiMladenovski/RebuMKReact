@@ -25,7 +25,7 @@ const StartedDrive = () => {
         await axios.post(`/drive/finish/${driveId}`, null, { params: {
             kmTravelled
           }
-        })       
+        })
         navigate("/requests")
     }
     const gradeDrive = () => {

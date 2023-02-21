@@ -7,10 +7,10 @@ const GradeDrive = (props) => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const payDrive = async () => {
+    const payDrive = () => {
         const driveId = location.state.driveId
         const totalPriceToPay = location.state.totalSumToPay
-        await axios.post(`/drive/pay/${driveId}`, null, { params: {
+        axios.post(`/drive/pay/${driveId}`, null, { params: {
             totalPriceToPay
           }
         })       
@@ -28,7 +28,7 @@ const GradeDrive = (props) => {
             <h3 style={{color: "green"}}>Your total price to pay is <br></br>
             {location.state.totalSumToPay} MKD</h3>
             <hr></hr>
-            <a type="submit" className="btn btn-primary" style={{backgroundColor: "darkcyan"}} onClick={() => payDrive()}>Pay Drive</a>
+            <a type="submit" className="btn btn-primary" style={{backgroundColor: "darkcyan", borderColor: 'black', color: 'white'}} onClick={() => payDrive()}>Pay Drive</a>
             <br></br>
             <br></br>
         </div>

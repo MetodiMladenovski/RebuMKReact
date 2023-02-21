@@ -1,30 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, useLocation } from 'react-router-dom'
 import axios from "../../custom-axios/axios";
 import CenteredContainer from "../UtilComponents/CenteredContainer";
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css';
+import markerIconPng from "leaflet/dist/images/marker-icon.png"
+import {Icon} from 'leaflet'
 
 const ConfirmedRequest = (props) => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const [formData, updateFormData] = React.useState({
-        destinationLatitude: "",
-        destinationLongitude: ""
-    })
+    const [destinationLatitude, setLatitude] = useState(null)
+    const [destinationLongitude, setLongitude] = useState(null)
+    const [position, setPosition] = useState(null)
 
-    const handleChange = (e) => {
-        updateFormData({
-            ...formData,
-            [e.target.name]: e.target.value.trim()
-        })
-    }
-
-    const onFormSubmit = async (e) => {
-        e.preventDefault();
+    const startDrive = async () => {
         const requestId = location.state.confirmedRequest.id;
         const driverId = localStorage.getItem("driverId");
-        const destinationLatitude = formData.destinationLatitude;
-        const destinationLongitude = formData.destinationLongitude;
         const response = await axios.post(`/drive/start/${requestId}/${driverId}`, {
             "destinationLatitude" : destinationLatitude,
             "destinationLongitude" : destinationLongitude
@@ -32,6 +25,29 @@ const ConfirmedRequest = (props) => {
         props.onRefreshPassengersMadeRequest();
         navigate('/started-drive', {state: {startedDrive: response.data}})
     }
+
+    function LocationMarker() {      
+        const map = useMapEvents({
+            dblclick(){
+                map.locate()
+            },
+            click(e) {
+              setLatitude(e.latlng.lat)
+              setLongitude(e.latlng.lng) 
+              setPosition(e.latlng)
+              map.flyTo(e.latlng, map.getZoom())
+            },
+            locationfound(e) {
+                setPosition(e.latlng)
+                map.flyTo(e.latlng, map.getZoom())
+              }
+          })
+        return position === null ? null : (
+          <Marker position={position}  icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
+            <Popup>You are here</Popup>
+          </Marker>
+        )
+      }
 
     return (
         <CenteredContainer>
@@ -43,36 +59,28 @@ const ConfirmedRequest = (props) => {
                 <h5 className="card-title">{location.state.confirmedRequest.cityAddress}, {location.state.confirmedRequest.streetAddress}, {location.state.confirmedRequest.numberAddress}</h5>
                 <h6 className="card-title">{location.state.confirmedRequest.latitude}, {location.state.confirmedRequest.longitude}</h6>
                 <p className="card-text">Passenger: {location.state.confirmedRequest.passenger.name} {location.state.confirmedRequest.passenger.surname}</p>                
-                <form onSubmit={onFormSubmit}>
-                <div className="form-group">
-                        <label htmlFor="destinationLatitude">Destination Latitude</label>
-                        <input type="float"
-                               className="form-control"
-                               id="destinationLatitude"
-                               name="destinationLatitude"
-                               placeholder="Enter destination latitude"
-                               required
-                               onChange={handleChange}
-                        />
-                    </div>
-                    <br></br>
-                    <div className="form-group">
-                        <label htmlFor="destinationLongitude">Destination Longitude</label>
-                        <input type="float"
-                               className="form-control"
-                               id="destinationLongitude"
-                               name="destinationLongitude"
-                               placeholder="Enter destination longitude"
-                               required
-                               onChange={handleChange}
-                        />
-                    </div>
-                    <br></br>
+                <br></br>
+                <label htmlFor="MapContainer" style={{color: 'red'}}>After picking your passenger, 
+                pick the destination location on the map where the passenger wants to go</label>
+                <MapContainer className="border border-info rounded-2" center={[location.state.confirmedRequest.latitude, location.state.confirmedRequest.longitude]} zoom={14} scrollWheelZoom={true} style={{width: '100%', position: 'relative', zIndex: 0}}>
+                    <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={[location.state.confirmedRequest.latitude, location.state.confirmedRequest.longitude]} icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
+                    <Popup position={[location.state.confirmedRequest.latitude, location.state.confirmedRequest.longitude]}>
+                        <p>Pick your passenger 
+                        <br></br>
+                        {location.state.confirmedRequest.passenger.name} {location.state.confirmedRequest.passenger.surname} from here.</p>
+                    </Popup>
+                    <LocationMarker />                        
+                </Marker>
+                </MapContainer>
+                <br></br>
                 <button id="submit" title={"Start Drive"} className={"btn btn-danger"} type="submit"
-                    style={{backgroundColor: "cyan", borderColor: "black"}}>
+                    style={{backgroundColor: "cyan", borderColor: "black", color: 'black'}} onClick={() => startDrive()}>
                     Start Drive
                 </button>       
-                </form>
             </div>
         </div>
         </CenteredContainer>

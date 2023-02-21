@@ -1,8 +1,7 @@
 import React from "react";
 import axios from "../../custom-axios/axios";
 import { useNavigate } from 'react-router-dom'
-import CenteredContainer from "../UtilComponents/CenteredContainer";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import markerIconPng from "leaflet/dist/images/marker-icon.png"
 import {Icon} from 'leaflet'
@@ -45,7 +44,7 @@ const Requests = (props) => {
                                     <td>{term.passenger.name} {term.passenger.surname}</td>
                                     <td className={"text-right"}>
                                         <a title={"Confirm"} id="submit" className={"btn btn-primary"}
-                                            style={{backgroundColor: "darkcyan", borderColor: "black"}}
+                                            style={{backgroundColor: "darkcyan", borderColor: "black", color: 'white'}}
                                             onClick={() => toConfirmedRequest(localStorage.getItem("driverId"), term.id)}>Confirm</a>
                                     </td>
                                 </tr>
@@ -63,7 +62,7 @@ const Requests = (props) => {
                 {props.requests.map((term) => {
                     return(
                         <Marker position={[term.latitude, term.longitude]} icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
-                            <Popup position={[term.latitude, term.longitude+0.23]}>
+                            <Popup position={[term.latitude, term.longitude]}>
                                 <p>{term.passenger.name} {term.passenger.surname}</p>
                                 <p>{term.cityAddress}, {term.streetAddress}, {term.numberAddress}</p>
                             </Popup>

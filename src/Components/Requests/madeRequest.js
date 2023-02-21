@@ -2,6 +2,10 @@ import React from "react";
 import { useLocation, useNavigate } from 'react-router-dom'
 import CenteredContainer from "../UtilComponents/CenteredContainer";
 import axios from "../../custom-axios/axios";
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css';
+import markerIconPng from "leaflet/dist/images/marker-icon.png"
+import {Icon} from 'leaflet'
 
 const MadeRequest = (props) => {
     const location = useLocation()
@@ -79,11 +83,22 @@ const MadeRequest = (props) => {
             <br></br>
             {messageAfterConfirmation1}
             {messageAfterConfirmation2}
-            <a style={{backgroundColor: "darkcyan"}} className="btn btn-primary" 
+            <a style={{backgroundColor: "darkcyan", color: 'white', borderColor: 'black'}} className="btn btn-primary" 
             onClick={() => updateMadeRequest()}>Refresh</a>
             <br></br>
             {joinDrive}
         </div>
+        <MapContainer className="border border-info rounded-2" center={[formData.latitude, formData.longitude]} zoom={16} scrollWheelZoom={true} style={{width: '100%', marginTop: '50px', position: 'relative', zIndex: 0}}>
+                <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Marker position={[formData.latitude, formData.longitude]} icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
+                    <Popup position={[formData.latitude, formData.longitude]}>
+                        <p>Pick up location. Wait here.</p>
+                    </Popup>
+                </Marker>
+        </MapContainer>
         </CenteredContainer>
     )
 }

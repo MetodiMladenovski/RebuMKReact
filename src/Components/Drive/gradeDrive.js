@@ -47,7 +47,7 @@ const GradeDrive = (props) => {
                 />
             </div>
             <br></br>
-            <button id="submit" type="submit" className="btn btn-primary" style={{backgroundColor: "darkcyan"}}>Grade</button>
+            <button id="submit" type="submit" className="btn btn-primary" style={{backgroundColor: "darkcyan", borderColor: 'black', color: 'white'}}>Grade</button>
             <br></br>
             <br></br>
         </form>

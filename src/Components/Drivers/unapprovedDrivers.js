@@ -50,12 +50,12 @@ const UnapprovedDrivers = (props) => {
                                     <td>{term.grade}</td>
                                     <td className={"text-right"}>
                                         <a title={"Approve Driver"} className={"btn btn-primary"}
-                                            style={{backgroundColor: "cyan", borderColor: "black"}}
+                                            style={{backgroundColor: "cyan", borderColor: "black", color: 'black'}}
                                             onClick={() => props.onApproveDriver(term.id)}>Approve Driver</a>
                                     </td>
                                     <td className={"text-right"}>
-                                        <a title={"Check driver's car"} className={"btn btn-primary"}
-                                            style={{backgroundColor: "coral", borderColor: "black"}}
+                                        <a title={"Check driver's car"} className="btn btn-primary"
+                                            style={{backgroundColor: "coral", borderColor: "black", borderColor: 'black', color: 'black'}}
                                             onClick={() => checkDriversCar(term.id)}>Check driver's car</a>
                                     </td>
                                 </tr>
