@@ -18,7 +18,7 @@ const Requests = (props) => {
         <div className={"container mm-4 mt-5"} style={{width: "85%", margin: 'auto'}}>
             <h2 style={{textAlign: 'center', color: "darkcyan"}}>Requests</h2>    
             <hr></hr>  
-            <div className={"row"}>
+            <div className={"row table-responsive"}>
                 <div className={"row"} style={{margin: 'auto'}}>
                     <table className={"table table-hover"} >
                         <thead>

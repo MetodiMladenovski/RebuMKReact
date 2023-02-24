@@ -5,9 +5,10 @@ const header = (props) => {
     
     let register = (<Link style={{backgroundColor: "white", borderColor: "black", color: 'black'}} className="btn btn-primary" to={"/register"}>Register</Link>);
     let login = (<Link style={{backgroundColor: "white", borderColor: "black", color: 'black'}} className="btn btn-primary" to={"/login"} type="submit">Login</Link>);
-    let adminReport = (<Link style={{marginLeft: 1 +"em", color: "white", fontSize: '18px'}} className="nav-link active" aria-current="page" to={"/report/admin"}>Check Report</Link>);
-    let driverReport = (<Link style={{marginLeft: 1 +"em", color: "white", fontSize: '18px'}} className="nav-link active" aria-current="page" to={"/report/driver"}>Check Report</Link>);
-    let passengerReport = (<Link style={{marginLeft: 1 +"em", color: "white", fontSize: '18px'}} className="nav-link active" aria-current="page" to={"/report/passenger"}>Check Report</Link>);
+    let adminReport = (<Link style={{color: "white", fontSize: '14px', marginRight:'8px'}} className="nav-link active" aria-current="page" to={"/report/admin"}>Check Report</Link>);
+    let driverReport = (<Link style={{color: "white", fontSize: '14px'}} className="nav-link active" aria-current="page" to={"/report/driver"}>Check Report</Link>);
+    let passengerReport = (<Link style={{color: "white", fontSize: '14px'}} className="nav-link active" aria-current="page" to={"/report/passenger"}>Check Report</Link>);
+    let rebumk = (<Link style={{marginLeft: 0.4 +"em", color: "white", fontSize: '22px', fontWeight: 'bold', fontStyle: 'italic'}} className="nav-link active" aria-current="page" to={"/home"}>RebuMK</Link>);
 
     let isLoggedIn = false
     let showRegister = register
@@ -36,19 +37,19 @@ const header = (props) => {
 
     return (
         <div className="container">
-            <nav className="navbar navbar-expand-lg bg-body-tertiary rounded-bottom" style={{width:'85%', margin: 'auto', backgroundColor: '#0dbfd3'}}>
+            <nav className="navbar navbar-expand-lg rounded-bottom" style={{width:'85%', margin: 'auto', backgroundColor: '#0dbfd3'}}>
                 <div className="container">
-                    <a className="navbar-brand" href="/home" style={{color:'white', fontWeight: 'bold', fontStyle: 'italic', fontSize: '24px'}}>
-                        <img src={require("../../images/logo.PNG")} alt="Logo" width="100" height="34" className="d-inline-block align-text-top" style={{marginRight: '10px'}}/>
-                        RebuMK
+                    <a className="navbar-brand" href="/home">
+                        <img src={require("../../images/logo.PNG")} alt="Logo" width="100" height="34" className="d-inline-block align-text-top"/>
                     </a>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                {report}
+                                {rebumk}
                             </li>
                         </ul>
                     </div>
+                    {report}
                     <form className="d-flex" style={{marginRight: "3px"}}>
                         {showRegister}
                     </form>

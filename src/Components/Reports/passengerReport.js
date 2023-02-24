@@ -6,8 +6,8 @@ const PassengerReport = (props) => {
         <div style={{width: "85%", margin: 'auto'}} className={"container mm-4 mt-5"}>
             <h2 style={{textAlign: "center", color: "darkcyan"}}>Report on your drivers and drives</h2>      
             <hr></hr>
-            <div className={"row"}>
-                <div className={"row"}>
+            <div className={"row table-responsive"}>
+                <div className={"row"} style={{margin: 'auto'}}>
                     <table className={"table table-striped"}>
                         <thead>
                         <tr>
@@ -32,6 +32,9 @@ const PassengerReport = (props) => {
                     </table>
                 </div>
             </div>
+            <div style={{textAlign: "center"}}>
+                <a className="btn btn-primary" onClick={() => props.onDownloadReport(localStorage.getItem("passengerId"))} style={{borderColor: 'black', backgroundColor: 'cyan', color: "black"}}>Download Report</a>
+            </div>      
         </div>
     )
 }

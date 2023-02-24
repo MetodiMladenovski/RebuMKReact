@@ -1,6 +1,21 @@
 import axios from "../custom-axios/axios";
 
 const RebuService = {
+    downloadPassengerReport: (passengerId) => {
+        return axios.get(`/reports/download/passenger/${passengerId}`,{
+            responseType: "blob",
+        });
+    },
+    downloadDriverReport: (driverId) => {
+        return axios.get(`/reports/download/driver/${driverId}`,{
+            responseType: "blob",
+        });
+    },
+    downloadAdminReport: () => {
+        return axios.get(`/reports/download/admin`,{
+            responseType: "blob",
+        });
+    },
     getAdminReport: () => {
         return axios.get("/reports/admin")
     },

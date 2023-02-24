@@ -3,11 +3,11 @@ import React from "react";
 const Payments = (props) => {
 
     return(
-        <div className={"container mm-4 mt-5"}>
-            <h2 style={{textAlign: "center", color: "#00CED1"}}>Payments</h2>      
+        <div className={"container mm-4 mt-5"} style={{width: "85%", margin: 'auto'}}>
+            <h2 style={{textAlign: "center", color: "darkcyan"}}>Payments</h2>      
             <hr></hr>
-            <div className={"row"}>
-                <div className={"row"}>
+            <div className={"row table-responsive"}>
+                <div className={"row"} style={{margin: 'auto'}}>
                     <table className={"table table-striped"}>
                         <thead>
                         <tr>

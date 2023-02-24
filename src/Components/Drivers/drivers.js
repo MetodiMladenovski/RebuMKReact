@@ -9,9 +9,11 @@ const Drivers = (props) => {
     };
 
     return(
+        <div className="container">
+        <h2 style={{color: 'darkcyan', textAlign: 'center', marginTop: '5px'}}>Drivers</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4" style={{width: '80%', margin: 'auto', marginBottom: '40px'}}>
             {props.drivers.map((term) => {
-                const IMAGE_SRC = `http://localhost:8080/driver/${term.id}/profile/picture`;
+             const IMAGE_SRC = `http://localhost:8080/driver/${term.id}/profile/picture`;
              return(
                 <div class="col">
                     <div class="card" >
@@ -36,6 +38,7 @@ const Drivers = (props) => {
                     </div>
                 </div>
             )})}
+        </div>
         </div>
     )
 }

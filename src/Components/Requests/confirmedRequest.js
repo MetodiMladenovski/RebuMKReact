@@ -18,15 +18,16 @@ const ConfirmedRequest = (props) => {
     const startDrive = async () => {
         const requestId = location.state.confirmedRequest.id;
         const driverId = localStorage.getItem("driverId");
+        if(!(destinationLatitude && destinationLongitude)){
+            alert("Must choose destination address for passenger on the map.");
+            return;
+        }
         const response = await axios.post(`/drive/start/${requestId}/${driverId}`, {
             "destinationLatitude" : destinationLatitude,
             "destinationLongitude" : destinationLongitude
         })
         const startLatitude = location.state.confirmedRequest.latitude;
         const startLongitude = location.state.confirmedRequest.longitude;
-        if(!(destinationLatitude && destinationLongitude)){
-            alert("Must choose destination address for passenger on the map.")
-        }
         props.onRefreshPassengersMadeRequest();
         navigate('/started-drive', {state: {startedDrive: response.data, startLatitude: startLatitude, startLongitude: startLongitude}})
     }

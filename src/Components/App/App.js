@@ -67,15 +67,48 @@ class App extends Component {
                           <Route path={"/car"} element={<Car />}/>
                           <Route path={"/add-car"} element={<AddCar onAddCar={this.addCar} />}/>
                           <Route path={"/payments"} element={<Payments payments={this.state.payments} />}/>
-                          <Route path={"/report/admin"} element={<AdminReport report={this.state.adminReport} />}/>
-                          <Route path={"/report/driver"} element={<DriverReport report={this.state.driverReport} />}/>
-                          <Route path={"/report/passenger"} element={<PassengerReport report={this.state.passengerReport} />}/>
+                          <Route path={"/report/admin"} element={<AdminReport report={this.state.adminReport} onDownloadReport={this.downloadAdminReport}/>}/>
+                          <Route path={"/report/driver"} element={<DriverReport report={this.state.driverReport} onDownloadReport={this.downloadDriverReport}/>}/>
+                          <Route path={"/report/passenger"} element={<PassengerReport report={this.state.passengerReport} onDownloadReport={this.downloadPassengerReport}/>}/>
                       </Routes>
                   </div>
               </main>
               <Footer/>
           </Router>
       )
+  }
+  downloadPassengerReport = (passengerId) => {
+    RebuMKService.downloadPassengerReport(passengerId)
+        .then((resp) => {
+            const url = window.URL.createObjectURL(new Blob([resp.data]));
+            const link = document.createElement("a");
+            link.href = url;
+            link.setAttribute("download", passengerId+".pdf");
+            document.body.appendChild(link);
+            link.click();
+        })
+  }
+  downloadDriverReport = (driverId) => {
+    RebuMKService.downloadDriverReport(driverId)
+        .then((resp) => {
+            const url = window.URL.createObjectURL(new Blob([resp.data]));
+            const link = document.createElement("a");
+            link.href = url;
+            link.setAttribute("download", driverId + ".pdf");
+            document.body.appendChild(link);
+            link.click();
+        })
+  }
+  downloadAdminReport = () => {
+    RebuMKService.downloadAdminReport()
+        .then((resp) => {
+            const url = window.URL.createObjectURL(new Blob([resp.data]));
+            const link = document.createElement("a");
+            link.href = url;
+            link.setAttribute("download",  "admin.pdf");
+            document.body.appendChild(link);
+            link.click();
+        })
   }
   
   

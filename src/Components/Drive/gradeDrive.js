@@ -37,16 +37,16 @@ const GradeDrive = (props) => {
         <CenteredContainer>
         <div className="card text-center">
         <form onSubmit={onFormSubmit}>
-            <div className="form-group">
+            <div className="form-group" style={{textAlign: 'center'}}>
                 <br></br>
                 <h3>Grade Driver</h3>
-                <input type="float"
+                <input  type="float"
                         className="form-control"
                         id="grade"
                         name="grade"
                         required
                         placeholder="Enter value between 0 and 5"
-                        style={{height: 100 + "%", width: 80 + "%", marginLeft: 2.5 + "em"}}
+                        style={{height: "100%", width: "90%", margin: 'auto'}}
                         onChange={handleChange}
                 />
             </div>
