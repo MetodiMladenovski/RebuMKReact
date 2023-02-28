@@ -26,8 +26,6 @@ const Requests = (props) => {
                             <th scope={"col"}>City</th>
                             <th scope={"col"}>Street</th>
                             <th scope={"col"}>Number</th>
-                            <th scope={"col"}>Latitude</th>
-                            <th scope={"col"}>Longitude</th>
                             <th scope={"col"}>Passenger</th>
                             <th scope={"col"}></th>
                         </tr>

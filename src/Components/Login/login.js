@@ -72,7 +72,9 @@ const Login = (props) => {
                         />
                     </div>
                     <br></br>
-                    <button id="submit" type="submit" className="btn btn-primary" style={{marginLeft: "8em", backgroundColor: "darkcyan", borderColor: "black"}}>Login</button>
+                    <div className="d-grid gap-2 col-6 mx-auto">
+                        <button id="submit" type="submit" className="btn btn-primary" style={{backgroundColor: "darkcyan", borderColor: "black"}}>Login</button>
+                    </div>
                 </form>
         </CenteredContainer>
     )

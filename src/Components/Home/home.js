@@ -14,10 +14,10 @@ const Home = (props) => {
     }
 
     let drivers = (<Link style={{backgroundColor: "#00CED1", borderColor: "black", color: "black", width: "55%"}} className="btn btn-primary" to={"/drivers"}>See drivers</Link>);
-    let unapprovedDrivers = (<Link style={{backgroundColor: "#00CED1", borderColor: "black", color: "black", width: "55%"}} className="btn btn-primary" to={"/unapproved-drivers"}>See unapproved drivers</Link>);
+    let unapprovedDrivers = (<Link style={{backgroundColor: "#00CED1", borderColor: "black", color: "black", width: "55%"}} className="btn btn-primary" to={"/unapproved-drivers"}>Unapproved drivers</Link>);
     let payments = (<Link style={{backgroundColor: "#00CED1", borderColor: "black", color: "black", width: "55%"}} className="btn btn-primary" to={"/payments"}>Payments</Link>);
     let makeRequest = (<Link style={{backgroundColor: "#00CED1", borderColor: "black", color: "black", width: "55%"}} className="btn btn-primary" to={"/make-request"}>Make Request</Link>);
-    let ongoingRequest = (<a style={{backgroundColor: "#00CED1", borderColor: "black", color: "black", width: "55%"}} className="btn btn-primary" onClick={() => goToOngoingRequest()}>OngoingRequest</a>);
+    let ongoingRequest = (<a style={{backgroundColor: "#00CED1", borderColor: "black", color: "black", width: "55%"}} className="btn btn-primary" onClick={() => goToOngoingRequest()}>Ongoing Request</a>);
     let requests = (<Link style={{backgroundColor: "#00CED1", borderColor: "black", color: "black", width: "55%"}} className="btn btn-primary" to={"/requests"}>See Requests</Link>)
     let register = (<Link style={{backgroundColor: "#00CED1", borderColor: "black", color: "black", width: "55%"}} className="btn btn-primary" to={"/register"}>Register</Link>);
     let login = (<Link style={{backgroundColor: "#00CED1", borderColor: "black", color: "black", width: "55%"}} className="btn btn-primary" to={"/login"}>Login</Link>);

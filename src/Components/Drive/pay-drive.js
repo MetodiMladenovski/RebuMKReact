@@ -26,7 +26,7 @@ const GradeDrive = (props) => {
             {location.state.driverPricePerKm} MKD</h4>
             <br></br>
             <h3 style={{color: "green"}}>Your total price to pay is <br></br>
-            {location.state.totalSumToPay} MKD</h3>
+            {(Math.round(location.state.totalSumToPay * 100) / 100).toFixed(2)} MKD</h3>
             <hr></hr>
             <a type="submit" className="btn btn-primary" style={{backgroundColor: "darkcyan", borderColor: 'black', color: 'white'}} onClick={() => payDrive()}>Pay Drive</a>
             <br></br>

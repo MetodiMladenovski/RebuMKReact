@@ -20,7 +20,7 @@ const StartedDrive = () => {
             kmTravelled: distanceToTravel
           }
         })
-        navigate("/requests");
+        navigate("/home");
     }
     const gradeDrive = () => {
         const driveId = location.state.startedDrive.id 
