@@ -1,6 +1,9 @@
 import axios from "../custom-axios/axios";
 
 const RebuService = {
+    changeProfilePicture: (driverId, profilePicture) => {
+        return axios.post(`/driver/${driverId}/profile/picture`, profilePicture);
+    },
     downloadPassengerReport: (passengerId) => {
         return axios.get(`/reports/download/passenger/${passengerId}`,{
             responseType: "blob",

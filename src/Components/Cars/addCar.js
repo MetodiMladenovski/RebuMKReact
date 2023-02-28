@@ -34,7 +34,7 @@ const AddCar = (props) => {
 
     return(
         <CenteredContainer>
-            <h3 style={{textAlign: "center", color: "#00CED1"}}>Add a car</h3>
+            <h3 style={{textAlign: "center", color: "darkcyan"}}>Add a car</h3>
             <br></br>
                 <form onSubmit={onFormSubmit}>
                     <div className="form-group">
@@ -44,7 +44,7 @@ const AddCar = (props) => {
                                id="licensePlate"
                                name="licensePlate"
                                required
-                               placeholder="SK-321-MK"
+                               placeholder="E.g: SK-321-MK"
                                style={{height: 100 + "%"}}
                                onChange={handleChange}
                         />
@@ -57,7 +57,7 @@ const AddCar = (props) => {
                                id="make"
                                name="make"
                                required
-                               placeholder="Opel"
+                               placeholder="E.g: Opel"
                                style={{height: 100 + "%"}}
                                onChange={handleChange}
                         />
@@ -69,7 +69,7 @@ const AddCar = (props) => {
                                className="form-control"
                                id="model"
                                name="model"
-                               placeholder="Astra"
+                               placeholder="E.g: Astra"
                                required
                                onChange={handleChange}
                         />
@@ -81,13 +81,15 @@ const AddCar = (props) => {
                                className="form-control"
                                id="year"
                                name="year"
-                               placeholder="2013"
+                               placeholder="E.g: 2013"
                                required
                                onChange={handleChange}
                         />
                     </div>
                     <br></br>
-                    <button id="submit" type="submit" className="btn btn-primary" style={{marginLeft: 8 + "em"}}>Add Car</button>
+                    <div className="d-grid gap-2 col-6 mx-auto">
+                    <button id="submit" type="submit" className="btn btn-primary" style={{backgroundColor: "darkcyan", borderColor: "black", color:'white'}}>Add Car</button>
+                    </div>
                 </form>
         </CenteredContainer>
     )

@@ -24,6 +24,7 @@ import AdminReport from '../Reports/adminReport'
 import DriverReport from '../Reports/driverReport'
 import PassengerReport from '../Reports/passengerReport'
 import Footer from '../Footer/footer'
+import DriverProfile from '../Drivers/driverProfile'
 
 
 class App extends Component {
@@ -37,7 +38,8 @@ class App extends Component {
           payments: [],
           adminReport: [],
           passengerReport: [],
-          driverReport: []
+          driverReport: [],
+          loggedDriver: null
       }
   }
 
@@ -64,6 +66,7 @@ class App extends Component {
                           <Route path={"/made-request"} element={<MadeRequest />}/>
                           <Route path={"/drivers"} element={<Drivers drivers={this.state.allApprovedDrivers} />}/>
                           <Route path={"/unapproved-drivers"} element={<UnapprovedDrivers drivers={this.state.allUnApprovedDrivers} onApproveDriver={this.approveDriver}/>}/>
+                          <Route path={"/driver/profile"} element={<DriverProfile driver={this.loggedDriver} onChangeProfilePicture={this.changeProfilePicture}/>}/>
                           <Route path={"/car"} element={<Car />}/>
                           <Route path={"/add-car"} element={<AddCar onAddCar={this.addCar} />}/>
                           <Route path={"/payments"} element={<Payments payments={this.state.payments} />}/>
@@ -77,6 +80,21 @@ class App extends Component {
           </Router>
       )
   }
+
+  changeProfilePicture = (driverId, profilePicture) => {
+    RebuMKService.changeProfilePicture(driverId, profilePicture)
+        .then((resp) => {
+            this.loggedDriver=resp.data
+    })
+  }
+
+  getLoggedDriver = (driverId) => {
+    RebuMKService.getDriverById(driverId)
+        .then((resp) => {
+            this.loggedDriver=resp.data
+    })
+  }
+
   downloadPassengerReport = (passengerId) => {
     RebuMKService.downloadPassengerReport(passengerId)
         .then((resp) => {
@@ -215,7 +233,8 @@ class App extends Component {
     if(localStorage.getItem("driverId")){
         const driverId = localStorage.getItem("driverId");
         this.loadRequests(driverId);
-        this.loadDriverReport(driverId)
+        this.loadDriverReport(driverId);
+        this.getLoggedDriver(driverId);
     } else if(localStorage.getItem("passengerId")){
         this.loadApprovedDrivers()
         this.loadPassengerReport(localStorage.getItem("passengerId"))

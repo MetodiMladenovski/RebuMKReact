@@ -1,12 +1,12 @@
 import React from "react";
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import CenteredContainer from "../UtilComponents/CenteredContainer";
 
 const Car = () => {
     const location = useLocation();
 
 
-    let driverButton = <a href="/home" className="btn btn-primary" style={{backgroundColor: "darkcyan",  borderColor: 'black'}}>Go back</a>
+    let driverButton = <Link to={"/driver/profile"} className="btn btn-primary" style={{backgroundColor: "darkcyan",  borderColor: 'black'}}>Go back</Link>
 
     let adminButton = <a href="/unapproved-drivers" className="btn btn-primary" style={{backgroundColor: "darkcyan", borderColor: 'black'}}>Go back</a>
 

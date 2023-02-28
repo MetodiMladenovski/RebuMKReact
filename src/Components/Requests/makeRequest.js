@@ -100,7 +100,7 @@ const MakeRequest = () => {
                                id="cityAddress"
                                name="cityAddress"
                                required
-                               placeholder="Skopje"
+                               placeholder="E.g: Skopje"
                                style={{height: 100 + "%"}}
                                onChange={handleChange}
                         />
@@ -113,7 +113,7 @@ const MakeRequest = () => {
                                id="streetAddress"
                                name="streetAddress"
                                required
-                               placeholder="Jordan Mijalkov"
+                               placeholder="E.g: Jordan Mijalkov"
                                style={{height: 100 + "%"}}
                                onChange={handleChange}
                         />
@@ -125,7 +125,7 @@ const MakeRequest = () => {
                                className="form-control"
                                id="numberAddress"
                                name="numberAddress"
-                               placeholder="2"
+                               placeholder="E.g: 2"
                                required
                                onChange={handleChange}
                         />

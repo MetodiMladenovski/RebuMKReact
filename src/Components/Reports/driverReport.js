@@ -26,10 +26,10 @@ const DriverReport = (props) => {
                                 <tr>
                                     <td>{term.passengerEmail}</td>
                                     <td>{term.passengerName} {term.passengerSurname}</td>
-                                    <td>{term.kmTravelledWithPassenger} km</td>
-                                    <td>{term.totalEarnings} MKD</td>
-                                    <td>{term.earningsPerKm} MKD per km</td>
-                                    <td>{term.averageGradeReceivedPerDrive}</td>
+                                    <td>{(Math.round(term.kmTravelledWithPassenger * 100) / 100).toFixed(2)} km</td>
+                                    <td>{(Math.round(term.totalEarnings * 100) / 100).toFixed(2)} MKD</td>
+                                    <td>{(Math.round(term.earningsPerKm * 100) / 100).toFixed(2)} MKD per km</td>
+                                    <td>{(Math.round(term.averageGradeReceivedPerDrive * 100) / 100).toFixed(2)}</td>
                                     <td>{term.numberOfDrives} drives</td>
                                 </tr>
                             )

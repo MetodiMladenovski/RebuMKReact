@@ -39,8 +39,6 @@ const Requests = (props) => {
                                     <td>{term.cityAddress}</td>
                                     <td>{term.streetAddress}</td>
                                     <td>{term.numberAddress}</td>
-                                    <td>{term.latitude}</td>
-                                    <td>{term.longitude}</td>
                                     <td>{term.passenger.name} {term.passenger.surname}</td>
                                     <td className={"text-right"}>
                                         <a title={"Confirm"} id="submit" className={"btn btn-primary"}

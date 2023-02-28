@@ -32,13 +32,13 @@ const AdminReport = (props) => {
                                     <td>{term.driverName} {term.driverSurname}</td>
                                     <td>{term.make}</td>
                                     <td>{term.model}</td>
-                                    <td>{term.driverGrade}</td>
+                                    <td>{(Math.round(term.driverGrade * 100) / 100).toFixed(2)}</td>
                                     <td>{term.numberOfDrives} drives</td>
-                                    <td>{term.totalMoneyMade} MKD</td>
+                                    <td>{(Math.round(term.totalMoneyMade * 100) / 100).toFixed(2)} MKD</td>
                                     <td>{term.numberOfDifferentRequests} requests</td>
                                     <td>{term.numberOfDifferentPassengers} passengers</td>
-                                    <td>{term.averageMoneyPerRequest} MKD</td>
-                                    <td>{term.totalKmTravelled} km</td>
+                                    <td>{(Math.round(term.averageMoneyPerRequest * 100) / 100).toFixed(2)} MKD</td>
+                                    <td>{(Math.round(term.totalKmTravelled * 100) / 100).toFixed(2)} km</td>
                                 </tr>
                             )
                         })}

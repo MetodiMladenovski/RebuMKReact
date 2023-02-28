@@ -50,7 +50,7 @@ const registerPassenger = (props) => {
                                id="firstName"
                                name="firstName"
                                required
-                               placeholder="John"
+                               placeholder="E.g: John"
                                style={{height: 100 + "%"}}
                                onChange={handleChange}
                         />
@@ -63,7 +63,7 @@ const registerPassenger = (props) => {
                                id="surname"
                                name="surname"
                                required
-                               placeholder="Doe"
+                               placeholder="E.g: Doe"
                                style={{height: 100 + "%"}}
                                onChange={handleChange}
                         />
@@ -75,7 +75,7 @@ const registerPassenger = (props) => {
                                className="form-control"
                                id="email"
                                name="email"
-                               placeholder="johndoe@email.com"
+                               placeholder="E.g: johndoe@email.com"
                                required
                                onChange={handleChange}
                         />
@@ -87,7 +87,7 @@ const registerPassenger = (props) => {
                                className="form-control"
                                id="password"
                                name="password"
-                               placeholder="moreCharacters@123"
+                               placeholder="E.g: moreCharacters@123"
                                required
                                onChange={handleChange}
                         />
@@ -99,7 +99,7 @@ const registerPassenger = (props) => {
                                className="form-control"
                                id="repeatedPassword"
                                name="repeatedPassword"
-                               placeholder="moreCharacters@123"
+                               placeholder="E.g: moreCharacters@123"
                                required
                                onChange={handleChange}
                         />

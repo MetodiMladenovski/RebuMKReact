@@ -8,7 +8,7 @@ const header = (props) => {
     let adminReport = (<Link style={{color: "white", fontSize: '14px', marginRight:'8px'}} className="nav-link active" aria-current="page" to={"/report/admin"}>Check Report</Link>);
     let driverReport = (<Link style={{color: "white", fontSize: '14px'}} className="nav-link active" aria-current="page" to={"/report/driver"}>Check Report</Link>);
     let passengerReport = (<Link style={{color: "white", fontSize: '14px'}} className="nav-link active" aria-current="page" to={"/report/passenger"}>Check Report</Link>);
-    let rebumk = (<Link style={{marginLeft: 0.4 +"em", color: "white", fontSize: '22px', fontWeight: 'bold', fontStyle: 'italic'}} className="nav-link active" aria-current="page" to={"/home"}>RebuMK</Link>);
+    let rebumk = (<Link style={{marginLeft: "0.4em", color: "white", fontSize: '22px', fontWeight: 'bold', fontStyle: 'italic'}} className="nav-link active" aria-current="page" to={"/home"}>RebuMK</Link>);
 
     let isLoggedIn = false
     let showRegister = register

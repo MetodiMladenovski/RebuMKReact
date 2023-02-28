@@ -20,7 +20,7 @@ const Drivers = (props) => {
                     <img src={IMAGE_SRC} class="card-img-top" alt="Driver doesn't have an image" style={{height: '285px'}}/>
                     <div class="card-body">
                         <h5 class="card-title">{term.name} {term.surname}</h5>
-                        <p style={term.status != 'AVAILABLE' ? { color: 'red' } : {color: 'green'}}>
+                        <p style={term.status !== 'AVAILABLE' ? { color: 'red' } : {color: 'green'}}>
                             Status: {term.status}</p>
                         <p class="card-text">
                             Price per kilometer: {term.pricePerKm} MKD

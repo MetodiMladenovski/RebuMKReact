@@ -22,9 +22,9 @@ const PassengerReport = (props) => {
                             return(
                                 <tr>
                                     <td>{term.driverName} {term.driverSurname}</td>
-                                    <td>{term.kmTravelledWithDriver} km</td>
-                                    <td>{term.totalPricePaid} MKD</td>
-                                    <td>{term.pricePerKm} MKD per km</td>
+                                    <td>{(Math.round(term.kmTravelledWithDriver * 100) / 100).toFixed(2)} km</td>
+                                    <td>{(Math.round(term.totalPricePaid * 100) / 100).toFixed(2)} MKD</td>
+                                    <td>{(Math.round(term.pricePerKm * 100) / 100).toFixed(2)} MKD per km</td>
                                 </tr>
                             )
                         })}
