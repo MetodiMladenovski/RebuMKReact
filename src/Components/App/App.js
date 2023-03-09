@@ -25,6 +25,7 @@ import DriverReport from '../Reports/driverReport'
 import PassengerReport from '../Reports/passengerReport'
 import Footer from '../Footer/footer'
 import DriverProfile from '../Drivers/driverProfile'
+import TipDriver from '../Drive/tipDriver';
 
 
 class App extends Component {
@@ -62,6 +63,7 @@ class App extends Component {
                           <Route path={"/started-drive"} element={<StartedDrive />}/>
                           <Route path={"/grade-drive"} element={<GradeDrive />}/>
                           <Route path={"/pay-drive"} element={<PayDrive />}/>
+                          <Route path={"/tip-driver"} element={<TipDriver onTipDriver={this.tipDriver}/>}/>
                           <Route path={"/make-request"} element={<MakeRequest />}/>
                           <Route path={"/made-request"} element={<MadeRequest />}/>
                           <Route path={"/drivers"} element={<Drivers drivers={this.state.allApprovedDrivers} />}/>
@@ -79,6 +81,13 @@ class App extends Component {
               <Footer/>
           </Router>
       )
+  }
+
+  tipDriver = (paymentId, driverTipSum) => {
+    RebuMKService.tipDriver(paymentId, driverTipSum).
+        then(() => {
+            this.fetchData()
+        });
   }
 
   changeProfilePicture = (driverId, profilePicture) => {

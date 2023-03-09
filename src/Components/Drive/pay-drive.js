@@ -3,18 +3,19 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import CenteredContainer from "../UtilComponents/CenteredContainer";
 import axios from "../../custom-axios/axios";
 
-const GradeDrive = (props) => {
+const PayDrive = (props) => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const payDrive = () => {
+    const payDrive = async () => {
         const driveId = location.state.driveId
         const totalPriceToPay = location.state.totalSumToPay
-        axios.post(`/drive/pay/${driveId}`, null, { params: {
+        const response = await axios.post(`/drive/pay/${driveId}`, null, { params: {
             totalPriceToPay
           }
-        })       
-        navigate("/home")
+        });
+        const paymentId = response.data;  
+        navigate("/tip-driver", {state: {paymentId: paymentId}})
     }
 
     return (
@@ -36,4 +37,4 @@ const GradeDrive = (props) => {
     )
 }
 
-export default GradeDrive;
+export default PayDrive;

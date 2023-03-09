@@ -15,6 +15,7 @@ const Payments = (props) => {
                             <th scope={"col"}>Driver Who Executed Drive</th>
                             <th scope={"col"}>Passenger</th>
                             <th scope={"col"}>Sum payed</th>
+                            <th scope={"col"}>Sum tipped</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -25,6 +26,7 @@ const Payments = (props) => {
                                     <td>{term.drive.driver.name} {term.drive.driver.surname}</td>
                                     <td>{term.passenger.name} {term.passenger.surname}</td>
                                     <td>{term.totalSumPayed} MKD</td>
+                                    <td>{term.driverTip} MKD</td>
                                 </tr>
                             )
                         })}

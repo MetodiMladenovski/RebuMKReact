@@ -1,6 +1,12 @@
 import axios from "../custom-axios/axios";
 
 const RebuService = {
+    tipDriver: (paymentId, driverTipSum) => {
+        return axios.post(`/payment/${paymentId}/tip`, null, { params: {
+            driverTipSum
+          }
+        })
+    },
     changeProfilePicture: (driverId, profilePicture) => {
         return axios.post(`/driver/${driverId}/profile/picture`, profilePicture);
     },
