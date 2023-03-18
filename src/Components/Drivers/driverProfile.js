@@ -37,7 +37,7 @@ const DriverProfile = (props) => {
             <h3 style={{textAlign: "center", color: "darkcyan"}}>Welcome to your profile</h3>
             <div class="col">
                     <div class="card" >
-                    <img src={IMAGE_SRC} class="card-img-top" alt="NOT AVAILABLE" style={{height: '285px'}}/>
+                    <img src={IMAGE_SRC} class="card-img-top" alt="NOT AVAILABLE" style={{height: '285px', padding: '15px'}}/>
                     <div class="card-body">
                         <h5 class="card-title">{props.driver.name} {props.driver.surname}</h5>
                         <p style={props.driver.status !== 'AVAILABLE' ? { color: 'red' } : {color: 'green'}}>
@@ -53,6 +53,8 @@ const DriverProfile = (props) => {
                         </p>
                         <hr></hr>
                         Upload or change your profile picture:
+                        <br></br>
+                        <span style={{fontSize: '12px'}}>Supported files .png and .jpeg</span>
                         <input
                             style={{backgroundColor: 'cyan'}}
                             type="file"
