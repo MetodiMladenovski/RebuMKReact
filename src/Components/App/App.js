@@ -67,7 +67,7 @@ class App extends Component {
                           <Route path={"/make-request"} element={<MakeRequest />}/>
                           <Route path={"/made-request"} element={<MadeRequest />}/>
                           <Route path={"/drivers"} element={<Drivers drivers={this.state.allApprovedDrivers} />}/>
-                          <Route path={"/unapproved-drivers"} element={<UnapprovedDrivers drivers={this.state.allUnApprovedDrivers} onApproveDriver={this.approveDriver}/>}/>
+                          <Route path={"/unapproved-drivers"} element={<UnapprovedDrivers drivers={this.state.allUnApprovedDrivers} onApproveDriver={this.approveDriver} onDenyDriver={this.denyDriver}/>}/>
                           <Route path={"/driver/profile"} element={<DriverProfile driver={this.loggedDriver} onChangeProfilePicture={this.changeProfilePicture}/>}/>
                           <Route path={"/car"} element={<Car />}/>
                           <Route path={"/add-car"} element={<AddCar onAddCar={this.addCar} />}/>
@@ -168,6 +168,12 @@ class App extends Component {
 
   approveDriver = (driverId) => {
     RebuMKService.approveDriver(driverId)
+    .then(() => {
+        this.fetchData()
+    })
+  }
+  denyDriver = (driverId) => {
+    RebuMKService.denyDriver(driverId)
     .then(() => {
         this.fetchData()
     })

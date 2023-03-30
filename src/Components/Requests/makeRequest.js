@@ -6,6 +6,7 @@ import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaf
 import 'leaflet/dist/leaflet.css';
 import markerIconPng from "leaflet/dist/images/marker-icon.png"
 import {Icon} from 'leaflet'
+import '../UtilComponents/App.css'
 
 const MakeRequest = () => {
 
@@ -146,7 +147,9 @@ const MakeRequest = () => {
                         <LocationMarker />
                     </MapContainer>
                     <br></br>
-                    <button id="submit" type="submit" className="btn btn-primary button2" style={{marginLeft: 8 + "em", backgroundColor: "cyan", borderColor: "black", color: 'black'}}>Submit</button>
+                    <p style={{textAlign: 'center'}}>
+                        <button id="submit" type="submit" className="myButton btn btn-primary" style={{backgroundColor: "cyan", borderColor: "black", color: 'black'}}>Submit</button>
+                    </p> 
                 </form>
         </CenteredContainer>
     )

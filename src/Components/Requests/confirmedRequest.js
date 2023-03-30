@@ -4,8 +4,10 @@ import axios from "../../custom-axios/axios";
 import CenteredContainer from "../UtilComponents/CenteredContainer";
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
-import markerIconPng from "leaflet/dist/images/marker-icon.png"
-import {Icon} from 'leaflet'
+import markerIconPng from "leaflet/dist/images/marker-icon.png";
+import {Icon} from 'leaflet';
+import '../UtilComponents/App.css';
+
 
 const ConfirmedRequest = (props) => {
     const location = useLocation();
@@ -58,7 +60,7 @@ const ConfirmedRequest = (props) => {
       }
 
     return (
-        <CenteredContainer>
+        <CenteredContainer style={{width: 'calc(750px - 50vw)', minWidth:'80%', maxWidth: '100%', margin: 'auto'}}>
         <div className="card text-center">
             <div className="card-header">
                 {location.state.confirmedRequest.status}
@@ -69,7 +71,7 @@ const ConfirmedRequest = (props) => {
                 <br></br>
                 <label htmlFor="MapContainer" style={{color: 'red'}}>After picking your passenger, 
                 pick the destination location on the map where the passenger wants to go</label>
-                <MapContainer className="border border-info rounded-2" center={[location.state.confirmedRequest.latitude, location.state.confirmedRequest.longitude]} zoom={14} scrollWheelZoom={true} style={{width: '100%', position: 'relative', zIndex: 0}}>
+                <MapContainer className="border border-info rounded-2" center={[location.state.confirmedRequest.latitude, location.state.confirmedRequest.longitude]} zoom={14} scrollWheelZoom={true} style={{position: 'relative', zIndex: 0, marginBottom: '20px'}}>
                     <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -83,8 +85,7 @@ const ConfirmedRequest = (props) => {
                     <LocationMarker />                        
                 </Marker>
                 </MapContainer>
-                <br></br>
-                <button id="submit" title={"Start Drive"} className={"btn btn-danger"} type="submit"
+                <button id="submit" title={"Start Drive"} className={"myButton btn btn-danger"} type="submit"
                     style={{backgroundColor: "cyan", borderColor: "black", color: 'black'}} onClick={() => startDrive()}>
                     Start Drive
                 </button>       

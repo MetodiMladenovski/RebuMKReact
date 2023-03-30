@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation, useNavigate } from 'react-router-dom'
 import CenteredContainer from "../UtilComponents/CenteredContainer";
 import axios from "../../custom-axios/axios";
+import '../UtilComponents/App.css'
 
 const GradeDrive = (props) => {
     const location = useLocation();
@@ -51,7 +52,7 @@ const GradeDrive = (props) => {
                 />
             </div>
             <br></br>
-            <button id="submit" type="submit" className="btn btn-primary" style={{backgroundColor: "darkcyan", borderColor: 'black', color: 'white'}}>Grade</button>
+            <button id="submit" type="submit" className="myButton btn btn-primary" style={{backgroundColor: "darkcyan", borderColor: 'black', color: 'white'}}>Grade</button>
             <br></br>
             <br></br>
         </form>

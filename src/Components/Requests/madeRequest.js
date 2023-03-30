@@ -6,6 +6,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import markerIconPng from "leaflet/dist/images/marker-icon.png"
 import {Icon} from 'leaflet'
+import '../UtilComponents/App.css'
 
 const MadeRequest = (props) => {
     const location = useLocation()
@@ -57,8 +58,8 @@ const MadeRequest = (props) => {
             please wait for the driver on the provided address.</p>
         messageAfterConfirmation2 = <p style={{color: "darkred", fontStyle: "bold"}}>After your driver picks you up and starts the drive,
         you should start the drive too.</p>
-        joinDrive = <a title={"Start Drive"} className={"btn btn-danger"} 
-                style={{backgroundColor: "cyan", borderColor: "black", color: "black"}} 
+        joinDrive = <a title={"Start Drive"} className={"myButton btn btn-danger"} 
+                style={{backgroundColor: "cyan", borderColor: "black", color: "black", width: '90%'}} 
                 onClick={() => joinDriveForPassenger()} >
                 Join Drive
                 </a>
@@ -84,10 +85,13 @@ const MadeRequest = (props) => {
             <br></br>
             {messageAfterConfirmation1}
             {messageAfterConfirmation2}
-            <a style={{backgroundColor: "darkcyan", color: 'white', borderColor: 'black'}} className="btn btn-primary" 
+            <p style={{textAlign: 'center'}}>
+            <a style={{backgroundColor: "darkcyan", color: 'white', borderColor: 'black', width: '90%'}} className="myButton btn btn-primary" 
             onClick={() => updateMadeRequest()}>Refresh</a>
-            <br></br>
+            </p>
+            <p style={{textAlign: 'center'}}>
             {joinDrive}
+            </p>
         </div>
         <MapContainer className="border border-info rounded-2" center={[formData.latitude, formData.longitude]} zoom={16} scrollWheelZoom={true} style={{width: '100%', marginTop: '50px', position: 'relative', zIndex: 0}}>
                 <TileLayer

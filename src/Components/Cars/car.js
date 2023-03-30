@@ -1,14 +1,15 @@
 import React from "react";
 import { useLocation, Link } from 'react-router-dom'
 import CenteredContainer from "../UtilComponents/CenteredContainer";
+import '../UtilComponents/App.css'
 
 const Car = () => {
     const location = useLocation();
 
 
-    let driverButton = <Link to={"/driver/profile"} className="btn btn-primary" style={{backgroundColor: "darkcyan",  borderColor: 'black'}}>Go back</Link>
+    let driverButton = <Link to={"/driver/profile"} className="myButton btn btn-primary" style={{backgroundColor: "darkcyan",  borderColor: 'black'}}>Go back</Link>
 
-    let adminButton = <a href="/unapproved-drivers" className="btn btn-primary" style={{backgroundColor: "darkcyan", borderColor: 'black'}}>Go back</a>
+    let adminButton = <a href="/unapproved-drivers" className="myButton btn btn-primary" style={{backgroundColor: "darkcyan", borderColor: 'black'}}>Go back</a>
 
     let button
     if(localStorage.getItem("driverId")){

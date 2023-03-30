@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import RebuMKService from "../../repository/rebuRepository";
 import CenteredContainer from '../UtilComponents/CenteredContainer';
+import '../UtilComponents/App.css'
 
 const Login = (props) => {
 
@@ -73,7 +74,7 @@ const Login = (props) => {
                     </div>
                     <br></br>
                     <div className="d-grid gap-2 col-6 mx-auto">
-                        <button id="submit" type="submit" className="btn btn-primary" style={{backgroundColor: "darkcyan", borderColor: "black"}}>Login</button>
+                        <button id="submit" type="submit" className="myButton btn btn-primary" style={{backgroundColor: "darkcyan", borderColor: "black"}}>Login</button>
                     </div>
                 </form>
         </CenteredContainer>

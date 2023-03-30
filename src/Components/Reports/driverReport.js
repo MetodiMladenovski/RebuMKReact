@@ -1,4 +1,5 @@
 import React from "react";
+import '../UtilComponents/App.css'
 
 const DriverReport = (props) => {
 
@@ -39,7 +40,7 @@ const DriverReport = (props) => {
                 </div>
             </div>
             <div style={{textAlign: "center"}}>
-                <a className="btn btn-primary" onClick={() => props.onDownloadReport(localStorage.getItem("driverId"))} style={{borderColor: 'black', backgroundColor: 'cyan', color: "black"}}>Download Report</a>
+                <a className="myButton btn btn-primary" onClick={() => props.onDownloadReport(localStorage.getItem("driverId"))} style={{borderColor: 'black', backgroundColor: 'cyan', color: "black"}}>Download Report</a>
             </div>   
         </div>
     )

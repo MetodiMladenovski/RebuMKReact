@@ -1,6 +1,7 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
 import CenteredContainer from "../UtilComponents/CenteredContainer";
+import '../UtilComponents/App.css'
 
 const registerPassenger = (props) => {
 
@@ -106,7 +107,7 @@ const registerPassenger = (props) => {
                     </div>
                     <br></br>
                     <div className="d-grid gap-2 col-6 mx-auto">
-                        <button id="submit" type="submit" className="btn btn-primary" style={{backgroundColor: "darkcyan", float: "center",  borderColor: "black", color:'white'}}>Register</button>
+                        <button id="submit" type="submit" className="myButton btn btn-primary" style={{backgroundColor: "darkcyan", float: "center",  borderColor: "black", color:'white'}}>Register</button>
                     </div>                
                 </form>
         </CenteredContainer>

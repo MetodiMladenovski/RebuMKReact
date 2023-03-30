@@ -7,6 +7,7 @@ import 'leaflet/dist/leaflet.css';
 import markerIconPng from "leaflet/dist/images/marker-icon.png"
 import {Icon} from 'leaflet'
 import  RoutingMachine from "./routineMachine";
+import '../UtilComponents/App.css'
 
 const StartedDrive = () => {
     const location = useLocation();
@@ -41,17 +42,17 @@ const StartedDrive = () => {
                                             kmTravelled: kmTravelled}})
     }
 
-    let finishDriveButton = <a title={"Finish Drive"} className={"btn btn-primary"}
+    let finishDriveButton = <a title={"Finish Drive"} className={"myButton btn btn-primary"}
                                     style={{backgroundColor: "darkcyan", borderColor: "black", color: "white"}}
                                     onClick={() => {finishDrive()}}>
                                         Finish Drive</a> 
 
-    let gradeButton = <a title={"Grade Drive"} className={"btn btn-primary"}
+    let gradeButton = <a title={"Grade Drive"} className={"myButton btn btn-primary"}
                                       style={{backgroundColor: "darkcyan", borderColor: "black", color: "white"}}
                                       onClick={() => {gradeDrive()}}>
                                           Grade Driver for Drive</a>  
                                           
-    let payForDrive = <a title={"Pay Drive"} className={"btn btn-primary"}
+    let payForDrive = <a title={"Pay Drive"} className={"myButton btn btn-primary"}
                                     style={{backgroundColor: "darkcyan", borderColor: "black", color: "white"}}
                                     onClick={() => {payDrive()}}>
                                         Pay Drive</a>  
@@ -90,10 +91,11 @@ const StartedDrive = () => {
     }
 
     return (
-        <CenteredContainer>
+        <CenteredContainer style={{width: 'calc(750px - 50vw)', minWidth:'80%', maxWidth: '100%', margin: 'auto'}}>
         <div className="card text-center">
             <div className="card-header">
-                {location.state.startedDrive.startTime}
+                {new Intl.DateTimeFormat('en-GB', { dateStyle: 'full', timeStyle: 'medium'})
+                    .format(new Date(location.state.startedDrive.startTime))}
                 <br></br>
                 {location.state.startedDrive.status}
             </div>

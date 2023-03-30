@@ -1,11 +1,12 @@
 import React from "react";
 import CenteredContainer from "../UtilComponents/CenteredContainer";
+import '../UtilComponents/App.css'
 
 const register = (props) => {
     
-    let registerDriver = (<a style={{backgroundColor: "cyan", float: "center",  borderColor: "black", color:'black'}} className="btn btn-primary" href="/registerDriver">REGISTER DRIVER</a>);
-    let registerPassenger = (<a style={{backgroundColor: "darkcyan", float: "center", borderColor: "black", color:'white'}} className="btn btn-primary" href="/registerPassenger">REGISTER PASSENGER</a>);
-    let login = (<a style={{backgroundColor: "#dce1de", borderColor: "black", color:'black'}} className="link" href="/login">here</a>)
+    let registerDriver = (<a style={{backgroundColor: "cyan", float: "center",  borderColor: "black", color:'black'}} className="myButton btn btn-primary" href="/registerDriver">REGISTER DRIVER</a>);
+    let registerPassenger = (<a style={{backgroundColor: "darkcyan", float: "center", borderColor: "black", color:'white'}} className="myButton btn btn-primary" href="/registerPassenger">REGISTER PASSENGER</a>);
+    let login = (<a style={{backgroundColor: "#dce1de", borderColor: "black", color:'black'}} className="myButton link" href="/login">here</a>)
 
     return (
         <CenteredContainer>

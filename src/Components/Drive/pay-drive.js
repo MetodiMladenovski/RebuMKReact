@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation, useNavigate } from 'react-router-dom'
 import CenteredContainer from "../UtilComponents/CenteredContainer";
 import axios from "../../custom-axios/axios";
+import '../UtilComponents/App.css'
 
 const PayDrive = (props) => {
     const location = useLocation();
@@ -29,9 +30,9 @@ const PayDrive = (props) => {
             <h3 style={{color: "green"}}>Your total price to pay is <br></br>
             {(Math.round(location.state.totalSumToPay * 100) / 100).toFixed(2)} MKD</h3>
             <hr></hr>
-            <a type="submit" className="btn btn-primary" style={{backgroundColor: "darkcyan", borderColor: 'black', color: 'white'}} onClick={() => payDrive()}>Pay Drive</a>
-            <br></br>
-            <br></br>
+            <p style={{textAlign: 'center'}}>
+            <a type="submit" className="myButton btn btn-primary" style={{backgroundColor: "darkcyan", borderColor: 'black', color: 'white', width: '90%'}} onClick={() => payDrive()}>Pay Drive</a>
+            </p>
         </div>
         </CenteredContainer>
     )

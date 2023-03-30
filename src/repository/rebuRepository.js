@@ -45,6 +45,9 @@ const RebuService = {
     approveDriver: (driverId) => {
         return axios.post(`/driver/approve/${driverId}`)
     },
+    denyDriver: (driverId) => {
+        return axios.post(`/driver/deny/${driverId}`)
+    },
     getDriverById: (driverId) => {
         return axios.get(`/driver/${driverId}`)
     },

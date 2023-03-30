@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from 'react-router-dom'
 import CenteredContainer from "../UtilComponents/CenteredContainer";
 import axios from "../../custom-axios/axios";
+import '../UtilComponents/App.css'
 
 const DriverProfile = (props) => {
 
@@ -63,13 +64,13 @@ const DriverProfile = (props) => {
                             />
                         <a 
                         style={{backgroundColor: "cyan", borderColor: "black", color: "black", marginTop: "10px"}} 
-                        className="btn btn-primary" 
+                        className="myButton btn btn-primary" 
                         onClick={() => uploadProfilePicture(props.driver.id)}>
                             Change picture
                         </a>
                         <hr></hr>
                         <Link style={{backgroundColor: "#00CED1", borderColor: "black", color: "black", width: "45%"}} 
-                        className="btn btn-primary" to={"/add-car"}>Add car</Link>
+                        className="myButton btn btn-primary" to={"/add-car"}>Add car</Link>
                         <a style={{backgroundColor: "#00CED1", borderColor: "black", color: "black", width: "45%", float: 'right'}}
                          className="btn btn-primary" onClick={() => checkDriversCar()}>Check car</a>
                     </div>

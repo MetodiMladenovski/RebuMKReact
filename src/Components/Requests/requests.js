@@ -5,6 +5,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import markerIconPng from "leaflet/dist/images/marker-icon.png"
 import {Icon} from 'leaflet'
+import '../UtilComponents/App.css'
 
 const Requests = (props) => {
     const navigate = useNavigate();
@@ -39,7 +40,7 @@ const Requests = (props) => {
                                     <td>{term.numberAddress}</td>
                                     <td>{term.passenger.name} {term.passenger.surname}</td>
                                     <td className={"text-right"}>
-                                        <a title={"Confirm"} id="submit" className={"btn btn-primary"}
+                                        <a title={"Confirm"} id="submit" className={"myButton btn btn-primary"}
                                             style={{backgroundColor: "darkcyan", borderColor: "black", color: 'white'}}
                                             onClick={() => toConfirmedRequest(localStorage.getItem("driverId"), term.id)}>Confirm</a>
                                     </td>
@@ -50,7 +51,7 @@ const Requests = (props) => {
                     </table>
                 </div>
             </div>
-            <MapContainer className="border border-info rounded-2" center={[41.9943, 21.4309]} zoom={13} scrollWheelZoom={true} style={{position: 'relative', zIndex: 0, marginBottom: "50px"}}>
+            <MapContainer className="border border-info rounded-2" center={[41.9943, 21.4309]} zoom={13} scrollWheelZoom={true} style={{width: 'calc(750px - 50vw)', minWidth:'80%', maxWidth: '100%', margin: 'auto', position: 'relative', zIndex: 0, marginBottom: "50px"}}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -61,7 +62,7 @@ const Requests = (props) => {
                             <Popup position={[term.latitude, term.longitude]}>
                                 <p>{term.passenger.name} {term.passenger.surname}</p>
                                 <p>{term.cityAddress}, {term.streetAddress}, {term.numberAddress}</p>
-                                <a title={"Confirm"} id="submit" className={"btn btn-primary"}
+                                <a title={"Confirm"} id="submit" className={"myButton btn btn-primary"}
                                             style={{backgroundColor: "darkcyan", borderColor: "black", color: 'white'}}
                                             onClick={() => toConfirmedRequest(localStorage.getItem("driverId"), term.id)}>Confirm</a>
                             </Popup>

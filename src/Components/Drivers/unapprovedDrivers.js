@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from 'react-router-dom'
-import CenteredContainer from "../UtilComponents/CenteredContainer";
 import axios from "../../custom-axios/axios";
+import '../UtilComponents/App.css'
 
 const UnapprovedDrivers = (props) => {
 
@@ -35,7 +35,9 @@ const UnapprovedDrivers = (props) => {
                             <th scope={"col"}>Grade</th>
                             <th scope={"col"}></th>
                             <th scope={"col"}></th>
-                        </tr>
+                            <th scope={"col"}></th>
+                        </tr>                           
+
                         </thead>
                         <tbody>
                         {props.drivers.map((term) => {
@@ -49,14 +51,19 @@ const UnapprovedDrivers = (props) => {
                                     <td>{term.numGrades}</td>
                                     <td>{term.grade}</td>
                                     <td className={"text-right"}>
-                                        <a title={"Approve Driver"} className={"btn btn-primary"}
+                                        <a title={"Approve Driver"} className={"myButton btn btn-primary"}
                                             style={{backgroundColor: "cyan", borderColor: "black", color: 'black'}}
-                                            onClick={() => props.onApproveDriver(term.id)}>Approve Driver</a>
+                                            onClick={() => props.onApproveDriver(term.id)}>Approve</a>
                                     </td>
                                     <td className={"text-right"}>
-                                        <a title={"Check driver's car"} className="btn btn-primary"
+                                        <a title={"Check driver's car"} className="myButton btn btn-primary"
                                             style={{backgroundColor: "coral", borderColor: "black", borderColor: 'black', color: 'black'}}
-                                            onClick={() => checkDriversCar(term.id)}>Check driver's car</a>
+                                            onClick={() => checkDriversCar(term.id)}>Check car</a>
+                                    </td>
+                                    <td className={"text-right"}>
+                                        <a title={"Check driver's car"} className="myButton btn btn-primary"
+                                            style={{backgroundColor: "red", borderColor: "black", borderColor: 'black', color: 'black'}}
+                                            onClick={() => props.onDenyDriver(term.id)}>Deny</a>
                                     </td>
                                 </tr>
                             )

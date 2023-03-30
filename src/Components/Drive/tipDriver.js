@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from 'react-router-dom'
 import CenteredContainer from "../UtilComponents/CenteredContainer";
+import '../UtilComponents/App.css'
 
 const TipDriver = (props) => {
     const location = useLocation();
@@ -43,9 +44,9 @@ const TipDriver = (props) => {
                 />
             </div>
             <br></br>
-            <button id="submit" type="submit" className="btn btn-primary" style={{backgroundColor: "darkcyan", borderColor: 'black', color: 'white', width: '60%'}}>Confirm</button>
+            <button id="submit" type="submit" className="myButton btn btn-primary" style={{backgroundColor: "darkcyan", borderColor: 'black', color: 'white', width: '60%'}}>Confirm</button>
             <hr></hr>
-            <a href="/home" className="btn btn-primary" style={{backgroundColor: "darkred", borderColor: 'black', color: 'white', width: '60%'}}>Skip</a>
+            <a href="/home" className="myButton btn btn-primary" style={{backgroundColor: "darkred", borderColor: 'black', color: 'white', width: '60%'}}>Skip</a>
             <br></br>
             <br></br>
         </form>
